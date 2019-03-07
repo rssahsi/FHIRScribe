@@ -23,7 +23,7 @@
           }
         });
 
-        console.log(addy);
+        console.log(JSON.stringify(addy));
 
                   var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
@@ -36,7 +36,7 @@
                     }
                   });
 
-                  console.log(obv);
+                  console.log(JSON.stringify(obv));
 
         $.when(pt, obv).fail(onError);
 
