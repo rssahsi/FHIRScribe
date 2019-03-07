@@ -97,7 +97,7 @@
       gender: {value: ''},
       birthdate: {value: ''},
       //telecom: {value: ''},
-      address: {value: ''},
+      //address: {value: ''},
       height: {value: ''},
       systolicbp: {value: ''},
       diastolicbp: {value: ''}, 
