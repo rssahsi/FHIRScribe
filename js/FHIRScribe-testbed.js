@@ -150,6 +150,6 @@
     $('#hdl').html(p.hdl);
   };
 
-  console.log("testicles\n\n");
-
 })(window);
+
+console.log("testicles\n\n");
