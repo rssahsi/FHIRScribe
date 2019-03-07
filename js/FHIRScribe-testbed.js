@@ -88,6 +88,8 @@
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
 
+    console.log(JSON.stringify(pt));
+
   };
 
   function defaultPatient(){
@@ -152,5 +154,5 @@
 
 })(window);
 
-console.log(JSON.stringify(pt));
+
 
