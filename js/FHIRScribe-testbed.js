@@ -30,8 +30,6 @@
           var byCodes = smart.byCodes(obv, 'code');
           // var gender = patient.gender;
 
-          console.log("testicles");
-
           var fname = '';
           var lname = '';
 
@@ -151,5 +149,7 @@
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
   };
+
+  console.log("testicles\n\n");
 
 })(window);
