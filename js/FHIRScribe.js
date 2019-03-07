@@ -38,7 +38,7 @@
             lname = patient.name[0].family.join(' ');
           }
 
-          var telecom = ' '; // added to extract home telephone number from FHIR telcom field
+          /* var telecom = ' '; // added to extract home telephone number from FHIR telcom field
           if (typeof patient.telecom[0] !== 'undefined') {
               telecom = patient.telecom[0].value.join(' ');
           }
@@ -46,7 +46,10 @@
           var address = ' '; // added to extract address from FHIR address field
           if (typeof patient.address[0] !== 'undefined') {
               address = patient.address[0].text;
-          } 
+          } */
+
+          var telecom = '123456';
+          var address = "1234 Bullshit Lane";
 
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
