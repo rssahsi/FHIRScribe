@@ -5,11 +5,11 @@ FHIR.oauth2.ready(function(smart) {
   var user = smart.user;
   var patient = smart.patient;
 
-  spewoutput(patient)
+  spewoutput(patient);
 
 
 });
 
 function spewoutput(pt) {
-  document.getElementById("holder").innerHTML ="<h2>" + "BAMF! " + "</h2>""
+  document.getElementById("holder").innerHTML = ("<h2>" + "BAMF! " + "</h2>");
 }
