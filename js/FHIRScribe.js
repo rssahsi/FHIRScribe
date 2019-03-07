@@ -41,9 +41,9 @@
           /* var telecom = ''; // added to extract home telephone number from FHIR telcom field
           if (typeof patient.telecom[0] !== 'undefined') {
               telecom = patient.telecom[0].value.join(' ');
-          } */
+          } 
           
-          /* var address = ''; // added to extract address from FHIR address field
+          var address = ''; // added to extract address from FHIR address field
           if (typeof patient.address[0] !== 'undefined') {
               address = patient.address[0].text;
           } */
