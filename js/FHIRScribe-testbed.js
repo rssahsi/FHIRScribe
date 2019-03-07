@@ -28,7 +28,7 @@
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
-          var gender = patient.gender;
+          // var gender = patient.gender;
 
           var fname = '';
           var lname = '';
@@ -59,7 +59,7 @@
 
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
-          p.gender = gender;
+          p.gender = patient.gender;
           p.fname = fname;
           p.lname = lname;
           //p.telecom = telecom; // I added this
@@ -97,7 +97,7 @@
       gender: {value: ''},
       birthdate: {value: ''},
       //telecom: {value: ''},
-      //address: {value: ''},
+      address: {value: ''},
       height: {value: ''},
       systolicbp: {value: ''},
       diastolicbp: {value: ''}, 
