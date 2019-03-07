@@ -19,9 +19,71 @@
       <div class="bounce2"></div>
       <div class="bounce3"></div>
     </div>
-
     <div id='holder' >
-      Datapattern
+      <h2>FHIRScribe Beta Output</h2>
+
+      <h2>Patient Resource</h2>
+      <table>
+        <tr>
+          <th>First Name:</th>
+          <td id='fname'></td>
+        </tr>
+        <tr>
+          <th>Last Name:</th>
+          <td id='lname'></td>
+        </tr>
+        <tr>
+          <th>Gender:</th>
+          <td id='gender'></td>
+        </tr>
+        <tr>
+          <th>Date of Birth:</th>
+          <td id='birthdate'></td>
+        </tr>
+        <tr>
+          <th>Address: </th>
+          <td id='address'></td>
+        </tr>
+        <tr>
+          <th>Telephone: </th>
+          <td id='telecom'></td>
+        </tr>
+      </table>
+      <h2>Observation Resource</h2>
+      <table>
+        <tr>
+          <th>Height:</th>
+          <td id='height'></td>
+        </tr>
+        <tr>
+          <th>Systolic Blood Pressure:</th>
+          <td id='systolicbp'></td>
+
+        </tr>
+        <tr>
+          <th>Diastolic Blood Pressure:</th>
+          <td id='diastolicbp'></td>
+        </tr>
+        <tr>
+          <th>LDL:</th>
+          <td id='ldl'></td>
+        </tr>
+        <tr>
+          <th>HDL:</th>
+          <td id='hdl'></td>
+        </tr>
+      </table>
+
+    
+        <h2>Variable Portion</h2>
+        <table>
+        <tr>
+          <th>Variable Array Check:</th>
+          <td id='variable'></td>
+          </td>
+        </tr>
+      
+      </table>
     </div>
     <!-- Required JS files to enable this page to embed within an MPage -->
     <!--
@@ -30,6 +92,9 @@
       <script src='./js/cerner/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
     -->
 
+    <!-- Application-level javascript-->
+    <script src='./js/FHIRScribe.js'></script>
+
     <!-- FHIR Client JS Library -->
     <script src='./js/cerner/fhir-client-v0.1.12.js'></script>
 
@@ -37,10 +102,6 @@
     <!-- https://github.com/cerner/fhir-client-cerner-additions -->
     <script src='./js/cerner/fhir-client-cerner-additions-1.0.0.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <!-- Application-level javascript-->
-    <script src='./js/FHIRScribe-testbed.js'></script>
-    
     <script>
       extractData().then(
         //Display Patient Demographics and Observations if extractData was success
