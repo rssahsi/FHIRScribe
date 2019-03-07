@@ -88,7 +88,7 @@
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
 
-  };
+  }; //end of onReady(smart);
 
   function defaultPatient(){
     return {
