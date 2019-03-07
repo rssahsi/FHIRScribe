@@ -38,18 +38,15 @@
             lname = patient.name[0].family.join(' ');
           }
 
-          /* var telephone = ' '; // added to extract telephone number from FHIR telcom field
+          var telecom = ' '; // added to extract home telephone number from FHIR telcom field
           if (typeof patient.telecom[0] !== 'undefined') {
-              telephone = patient.telcom[0];
+              telecom = patient.telecom[0].value.join(' ');
           }
           
           var address = ' '; // added to extract address from FHIR address field
           if (typeof patient.address[0] !== 'undefined') {
-              address = patient.address[0]
-          } */
-
-          var telephone = '(999) 999-9999';
-          var address = "1234 Bullshit Lane";
+              address = patient.address[0].text;
+          } 
 
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
@@ -62,7 +59,7 @@
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
-          p.telephone = telephone; // I added this
+          p.telecom = telecom; // I added this
           p.address = address; // I added this
           p.height = getQuantityValueAndUnit(height[0]);
 
@@ -96,7 +93,7 @@
       lname: {value: ''},
       gender: {value: ''},
       birthdate: {value: ''},
-      telephone: {value: ''},
+      telecom: {value: ''},
       address: {value: ''},
       height: {value: ''},
       systolicbp: {value: ''},
@@ -142,7 +139,7 @@
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
     $('#address').html(p.address);
-    $('#telephone').html(p.telephone);
+    $('#telecom').html(p.telecom);
     $('#height').html(p.height);
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp); 
