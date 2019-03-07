@@ -48,8 +48,8 @@
               address = patient.address[0].text;
           } */
 
-          var telecom = '123456';
-          var address = "1234 Bullshit Lane";
+          //var telecom = '123456';
+          //var address = "1234 Bullshit Lane";
 
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
@@ -96,8 +96,8 @@
       lname: {value: ''},
       gender: {value: ''},
       birthdate: {value: ''},
-      telecom: {value: ''},
-      address: {value: ''},
+      //telecom: {value: ''},
+      //address: {value: ''},
       height: {value: ''},
       systolicbp: {value: ''},
       diastolicbp: {value: ''}, 
@@ -141,8 +141,8 @@
     $('#lname').html(p.lname);
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
-    $('#address').html(p.address);
-    $('#telecom').html(p.telecom);
+    //$('#address').html(p.address);
+    //$('#telecom').html(p.telecom);
     $('#height').html(p.height);
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp); 
