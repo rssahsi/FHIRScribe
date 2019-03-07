@@ -13,15 +13,17 @@
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
+
         var addy = smart.patient.api.fetchAll({
           type: 'Patient',
           query: {
-             address: { [home] }
+            use: {
+              $or: ['address']
+            }
           }
         });
 
-        console.log(JSON.stringify(addy));
-
+        console.log(addy);
 
                   var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
@@ -33,6 +35,8 @@
                       }
                     }
                   });
+
+                  console.log(obv);
 
         $.when(pt, obv).fail(onError);
 
