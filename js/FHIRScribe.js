@@ -66,14 +66,14 @@
           p.address = address; // I added this
           p.height = getQuantityValueAndUnit(height[0]);
 
-         /* commenting out the blood pressure crap
+         
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
           }
 
           if (typeof diastolicbp != 'undefined') {
             p.diastolicbp = diastolicbp;
-          } */
+          } 
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
@@ -99,8 +99,8 @@
       telephone: {value: ''},
       address: {value: ''},
       height: {value: ''},
-      /* systolicbp: {value: ''},
-      diastolicbp: {value: ''}, */
+      systolicbp: {value: ''},
+      diastolicbp: {value: ''}, 
       ldl: {value: ''},
       hdl: {value: ''},
     };
@@ -144,8 +144,8 @@
     $('#address').html(p.address);
     $('telephone').html(p.telephone);
     $('#height').html(p.height);
-    /* $('#systolicbp').html(p.systolicbp);
-    $('#diastolicbp').html(p.diastolicbp); */
+    $('#systolicbp').html(p.systolicbp);
+    $('#diastolicbp').html(p.diastolicbp); 
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
   };
