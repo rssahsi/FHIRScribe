@@ -13,6 +13,7 @@
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
+        console.log(JSON.stringify(pt));
         var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
                     query: {
@@ -87,8 +88,6 @@
 
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
-
-    console.log(JSON.stringify(pt));
 
   };
 
