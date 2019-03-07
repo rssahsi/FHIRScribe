@@ -141,7 +141,7 @@
     $('#lname').html(p.lname);
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
-    //$('#address').html(p.address);
+    $('#address').html(p.address);
     //$('#telecom').html(p.telecom);
     $('#height').html(p.height);
     $('#systolicbp').html(p.systolicbp);
