@@ -43,7 +43,7 @@
               telecom = patient.telecom[0].value.join(' ');
           } */
           
-          var address = ''; // added to extract address from FHIR address field
+          /* var address = ''; // added to extract address from FHIR address field
           if (typeof patient.address[0] !== 'undefined') {
               address = patient.address[0].text;
           } */
