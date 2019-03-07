@@ -49,7 +49,7 @@
           } 
 
           var telecom = '123456';
-          //var address = "1234 Bullshit Lane";
+          address = "1234 Bullshit Lane";
 
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
