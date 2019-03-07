@@ -152,4 +152,4 @@
 
 })(window);
 
-console.log("testicles");
+console.log(JSON.stringify(pt));
