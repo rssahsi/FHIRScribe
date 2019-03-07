@@ -62,8 +62,8 @@
           p.gender = gender;
           p.fname = fname;
           p.lname = lname;
-          p.telephone = telephone; // I added this
-          p.address = address; // I added this
+          //p.telephone = telephone; // I added this
+          //p.address = address; // I added this
           p.height = getQuantityValueAndUnit(height[0]);
 
          
@@ -96,8 +96,8 @@
       lname: {value: ''},
       gender: {value: ''},
       birthdate: {value: ''},
-      telephone: {value: ''},
-      address: {value: ''},
+      //telephone: {value: ''},
+      //address: {value: ''},
       height: {value: ''},
       systolicbp: {value: ''},
       diastolicbp: {value: ''}, 
@@ -141,8 +141,8 @@
     $('#lname').html(p.lname);
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
-    $('#address').html(p.address);
-    $('telephone').html(p.telephone);
+    //$('#address').html(p.address);
+    //$('#telephone').html(p.telephone);
     $('#height').html(p.height);
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp); 
