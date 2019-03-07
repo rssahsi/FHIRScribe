@@ -63,7 +63,7 @@
           p.fname = fname;
           p.lname = lname;
           //p.telecom = telecom; // I added this
-          //p.address = address; // I added this
+          p.address = address; // I added this
           p.height = getQuantityValueAndUnit(height[0]);
 
          
