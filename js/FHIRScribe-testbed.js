@@ -11,5 +11,5 @@ FHIR.oauth2.ready(function(smart) {
 });
 
 function spewoutput(pt) {
-  document.getElementById("holder").innerHTML ="<h2>" + "BAMF! " + pt.name[0] + "</h2>""
+  document.getElementById("holder").innerHTML ="<h2>" + "BAMF! " + "</h2>""
 }
