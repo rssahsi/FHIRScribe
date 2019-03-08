@@ -66,7 +66,7 @@
           var homenumber = '';
           var mobilenumber = '';
 
-          $.each( patient.telecom, function (key, value) {
+          $.each( patient, function (key, value) {
             alert (key + ": " + value);
           });
         
