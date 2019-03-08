@@ -65,7 +65,7 @@
           /* Now we cobble together a sensible telephone number or two */
           var homenumber = '';
           var mobilenumber = '';
-          let iterable = patient.telecom;
+          let iterable = new Map(patient.telecom);
           for (let entry of iterable) {
             if (typeof patient.telecom(entry).system !== 'undefined') {
 
