@@ -45,8 +45,8 @@
           } */
           
           var city = '';
-          if (typeof patient.address[home].city !== 'undefined') {
-              city = patient.address[home].city;
+          if (typeof patient.address[0].city !== 'undefined') {
+              city = patient.address[0].city;
           } 
 
           var line = '';
