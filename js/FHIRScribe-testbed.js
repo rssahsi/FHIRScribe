@@ -49,21 +49,22 @@
             pt_lastname = patient.name[0].family.join(' ');
           }
 
-          /* Chew through the crap to the first defined patient address in the array
-             Read the components and rearrange them into a single string */
+          /* Presume the first address object is the only one that matters
+             read the components and rearrange them into a single string. */
+          /* in future: we may need to iterate through multiple addresses to find 'home' */
 
           var line = ''; var city = ''; var state = ''; var postalCode = '';
           if (typeof patient.address[0].city !== 'undefined') city = patient.address[0].city;
-
           if (typeof patient.address[0].line !== 'undefined') line = patient.address[0].line.join(', ');
-
           if (typeof patient.address[0].state !== 'undefined') state = patient.address[0].state;
-      
-          if (typeof patient.address[0].postalCode !== 'undefined') postalCode = patient.address[0].postalCode;
-          
+          if (typeof patient.address[0].postalCode !== 'undefined') postalCode = patient.address[0].postalCode;         
           var address = line + ", " + city + ", " + state + " " + postalCode;
 
-          /* Now we cobble together a sensible telephone number or two */
+          /* Now we cobble together a sensible telephone number or two.
+             We have to iterate through multiple telecom objects to find which are 
+             "system: phone", and which is highest priority for a contact number.
+             home >> mobile >> work >> other */
+             
           var homenumber = '';
           var mobilenumber = '';
 
