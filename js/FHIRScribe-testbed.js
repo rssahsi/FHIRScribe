@@ -95,9 +95,6 @@
 //                  homenumber = patient.telecom[0].value;
 //              }
 //
-          var telecom = homenumber;
-
-
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
