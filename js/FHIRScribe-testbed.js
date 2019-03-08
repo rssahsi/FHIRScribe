@@ -39,11 +39,8 @@
             lname = patient.name[0].family.join(' ');
           }
 
-          /* var telecom = ''; // added to extract home telephone number from FHIR telcom field
-          if (typeof patient.telecom[0] !== 'undefined') {
-              telecom = patient.telecom[0].value.join(' ');
-          } */
-          
+          /* Chew through the crap to the first defined patient address in the array
+             Read the components and rearrange them into a single string */
           var city = '';
           if (typeof patient.address[0].city !== 'undefined') {
               city = patient.address[0].city;
@@ -63,9 +60,27 @@
           if (typeof patient.address[0].postalCode !== 'undefined') {
             postalCode = patient.address[0].postalCode;
           }
-
-          var telecom = '123456';
           var address = line + ", " + city + ", " + state + " " + postalCode;
+
+          /* Now we cobble together a sensible telephone number or two */
+          var homenumber = '';
+          var mobilenumber = '';
+          let iterable = patient.telecom;
+          for (let entry of iterable) {
+            if (typeof patient.telecom(entry).system !== 'undefined') {
+
+              if (typeof patient.telecom(entry).system == 'phone') {
+
+                if (typeof patient.telecom(entry).use == 'home') {
+                  homenumber = patient.telecom(entry).value;
+                } else if (typeof patient.telecom(entry).use == 'mobile')
+                  mobilenumber = patient.telecom(entry).value;
+              }
+            }
+          }
+
+           var telecom = homenumber;
+
 
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
@@ -78,7 +93,7 @@
           p.gender = patient.gender;
           p.fname = fname;
           p.lname = lname;
-          //p.telecom = telecom; // I added this
+          p.telecom = telecom; // I added this
           p.address = address; // I added this
           p.height = getQuantityValueAndUnit(height[0]);
 
@@ -112,7 +127,7 @@
       lname: {value: ''},
       gender: {value: ''},
       birthdate: {value: ''},
-      //telecom: {value: ''},
+      telecom: {value: ''},
       address: {value: ''},
       height: {value: ''},
       systolicbp: {value: ''},
@@ -158,7 +173,7 @@
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
     $('#address').html(p.address);
-    //$('#telecom').html(p.telecom);
+    $('#telecom').html(p.telecom);
     $('#height').html(p.height);
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp); 
