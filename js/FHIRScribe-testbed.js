@@ -71,19 +71,31 @@
           console.log(Object.keys(patient.telecom[0])); // system, value, use
 
           $.each( patient.telecom, function (key, value) {
+            if (typeof patient.telecom[key] !== 'undefined') {
+              if (patient.telecom[key].system == "phone") {
+                if patient.telecom[key].use == "home") {
+                  homenumber = patient.telecom[key].value;                  
+                }
+              }
+            } 
+
+
+            }
+
+
             console.log (key + ": " + JSON.stringify(value));
           });
-          
-            if (typeof patient.telecom[0].value !== 'undefined') {
 
-              var system = patient.telecom[0].system;
-              var use = patient.telecom[0].use;
-
-              console.log("System is " + system + ". Use is " + use);
-
-                  homenumber = patient.telecom[0].value;
-              }
-
+//            if (typeof patient.telecom[0].value !== 'undefined') {
+//
+//             var system = patient.telecom[0].system;
+//             var use = patient.telecom[0].use;
+//
+//              console.log("System is " + system + ". Use is " + use);
+//
+//                  homenumber = patient.telecom[0].value;
+//              }
+//
           var telecom = homenumber;
 
 
