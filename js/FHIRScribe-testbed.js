@@ -67,7 +67,7 @@
           var mobilenumber = '';
 
           $.each( patient, function (key, value) {
-            alert (key + ": " + value);
+            alert (key + ": " + JSON.stringify(value));
           });
         
 
