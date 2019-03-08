@@ -66,9 +66,10 @@
           var homenumber = '';
           var mobilenumber = '';
 
-          for (var i = 0, len = patient.telecom.length; i < len i++) {
-            console.log("Iteration " + i + " : " + patient.telecom[0].value);
-          }
+          $.each( patient.telecom, function (key, value) {
+            alert (key + ": " + value);
+          });
+        
 
           console.log(Object.keys(patient.telecom[0]));
             if (typeof patient.telecom[0].value !== 'undefined') {
