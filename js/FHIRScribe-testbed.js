@@ -59,8 +59,13 @@
             state = patient.address[0].state;
           }
 
+          var use = '';
+          if (typeof patient.address[0].use !== 'undefined') {
+            use = patient.address[0].use;
+          }
+
           var telecom = '123456';
-          var address = line + ", " + city + ", " + state;
+          var address = use + ":  " +line + ", " + city + ", " + state;
 
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
