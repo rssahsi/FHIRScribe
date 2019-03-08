@@ -54,7 +54,7 @@
             line = patient.address[0].line.join(', ');
           }
 
-          var state = 'ON';
+          var state = '';
           if (typeof patient.address[0].state !== 'undefined') {
             line = patient.address[0].state;
           }
