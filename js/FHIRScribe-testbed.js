@@ -14,9 +14,8 @@
         var patient = smart.patient;
         var pt = patient.read();
 
-        var addy = smart.patient.api.fetchAll({
-          type: 'Patient',
-          query: {"address: "}  
+        var patientdata = smart.patient.api.fetchAll({
+          type: 'Patient', query: { address: }
           }
         });
 
@@ -71,7 +70,7 @@
           p.fname = fname;
           p.lname = lname;
           //p.telecom = telecom; // I added this
-          p.address = patient.address; // I added this
+          p.address = address; // I added this
           p.height = getQuantityValueAndUnit(height[0]);
 
          
