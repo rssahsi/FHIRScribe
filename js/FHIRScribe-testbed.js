@@ -16,7 +16,7 @@
 
         var addy = smart.patient.api.fetchAll({
           type: 'Patient',
-          query: {address: }  
+          query: {"address: "}  
           }
         });
 
