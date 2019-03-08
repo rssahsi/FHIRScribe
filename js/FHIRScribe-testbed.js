@@ -73,7 +73,7 @@
           $.each( patient.telecom, function (key, value) {
             if (typeof patient.telecom[key] !== 'undefined') {
               if (patient.telecom[key].system == "phone") {
-                if patient.telecom[key].use == "home") {
+                if (patient.telecom[key].use == "home") {
                   homenumber = patient.telecom[key].value;                  
                 }
               }
