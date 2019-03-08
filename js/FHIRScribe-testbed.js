@@ -65,16 +65,14 @@
           /* Now we cobble together a sensible telephone number or two */
           var homenumber = '';
           var mobilenumber = '';
-          let iterable = new Map(patient.telecom);
-          for (let entry of iterable) {
-            if (typeof patient.telecom(entry).system !== 'undefined') {
+            if (typeof patient.telecom[0].system !== 'undefined') {
 
-              if (typeof patient.telecom(entry).system == 'phone') {
+              if (typeof patient.telecom[0].system == 'phone') {
 
-                if (typeof patient.telecom(entry).use == 'home') {
-                  homenumber = patient.telecom(entry).value;
-                } else if (typeof patient.telecom(entry).use == 'mobile')
-                  mobilenumber = patient.telecom(entry).value;
+                if (typeof patient.telecom[0].use == 'home') {
+                  homenumber = patient.telecom[0].value;
+                } else if { (typeof patient.telecom[0].use == 'mobile')
+                  mobilenumber = patient.telecom[0].value;
               }
             }
           }
