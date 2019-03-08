@@ -11,8 +11,11 @@
     /* If there are specific observations to transfer to the document, call them here as well */
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
+        /* read the data in the 'patient' resouce */
         var patient = smart.patient;
         var pt = patient.read();
+
+        /* fetch the relevant data from the 'Observation' resource */
 
                   var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
@@ -29,14 +32,23 @@
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
-          // var gender = patient.gender;
 
-          var fname = '';
-          var lname = '';
+          /* wait! just how much shit is in that patient object we fetched? */
+          $.each( patient, function (key, value) {
+            console.log (key + ": " + JSON.stringify(value));
+          });
+          /* this is just debugging code */
+
+          /* compute patient name variables */
+
+          var pt_firstname = '';
+          var pt_fullgivenname = '';
+          var pt_lastname = '';
 
           if (typeof patient.name[0] !== 'undefined') {   
-            fname = patient.name[0].given.join(' ');
-            lname = patient.name[0].family.join(' ');
+            pt_firstname = patient.name[0].given[0];
+            pt_fullgivenname = patient.name[0].given.join(' ');
+            pt_lastname = patient.name[0].family.join(' ');
           }
 
           /* Chew through the crap to the first defined patient address in the array
@@ -66,11 +78,6 @@
           var homenumber = '';
           var mobilenumber = '';
 
-          $.each( patient, function (key, value) {
-            console.log (key + ": " + JSON.stringify(value));
-          });
-        
-
           console.log(Object.keys(patient.telecom[0]));
             if (typeof patient.telecom[0].value !== 'undefined') {
 
@@ -94,8 +101,9 @@
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           p.gender = patient.gender;
-          p.fname = fname;
-          p.lname = lname;
+          p.firstname = pt_firstname;
+          p.givenname = pt_fullgivenname;
+          p.lastname = pt_lastname;
           p.telecom = telecom; // I added this
           p.address = address; // I added this
           p.height = getQuantityValueAndUnit(height[0]);
@@ -126,8 +134,9 @@
 
   function defaultPatient(){
     return {
-      fname: {value: ''},
-      lname: {value: ''},
+      firstname: {value: ''},
+      givenname: {value: ''},
+      lastname: {value: ''},
       gender: {value: ''},
       birthdate: {value: ''},
       telecom: {value: ''},
@@ -171,8 +180,8 @@
   window.drawVisualization = function(p) {
     $('#holder').show();
     $('#loading').hide();
-    $('#fname').html(p.fname);
-    $('#lname').html(p.lname);
+    $('#fname').html(p.firstname);
+    $('#lname').html(p.lastname);
     $('#gender').html(p.gender);
     $('#birthdate').html(p.birthdate);
     $('#address').html(p.address);
