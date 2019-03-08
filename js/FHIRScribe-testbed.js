@@ -41,9 +41,7 @@
 
           /* compute patient name variables */
 
-          var pt_firstname = '';
-          var pt_fullgivenname = '';
-          var pt_lastname = '';
+          var pt_firstname = ''; var pt_fullgivenname = ''; var pt_lastname = '';
 
           if (typeof patient.name[0] !== 'undefined') {   
             pt_firstname = patient.name[0].given[0];
@@ -53,25 +51,16 @@
 
           /* Chew through the crap to the first defined patient address in the array
              Read the components and rearrange them into a single string */
-          var city = '';
-          if (typeof patient.address[0].city !== 'undefined') {
-              city = patient.address[0].city;
-          } 
 
-          var line = '';
-          if (typeof patient.address[0].line !== 'undefined') {
-            line = patient.address[0].line.join(', ');
-          }
+          var line = ''; var city = ''; var state = ''; var postalCode = '';
+          if (typeof patient.address[0].city !== 'undefined') city = patient.address[0].city;
 
-          var state = '';
-          if (typeof patient.address[0].state !== 'undefined') {
-            state = patient.address[0].state;
-          }
+          if (typeof patient.address[0].line !== 'undefined') line = patient.address[0].line.join(', ');
 
-          var postalCode = '';
-          if (typeof patient.address[0].postalCode !== 'undefined') {
-            postalCode = patient.address[0].postalCode;
-          }
+          if (typeof patient.address[0].state !== 'undefined') state = patient.address[0].state;
+      
+          if (typeof patient.address[0].postalCode !== 'undefined') postalCode = patient.address[0].postalCode;
+          
           var address = line + ", " + city + ", " + state + " " + postalCode;
 
           /* Now we cobble together a sensible telephone number or two */
