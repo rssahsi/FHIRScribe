@@ -65,6 +65,7 @@
           /* Now we cobble together a sensible telephone number or two */
           var homenumber = '';
           var mobilenumber = '';
+          console.log(Object.keys(patient.telecom[0]));
             if (typeof patient.telecom[0].value !== 'undefined') {
                   homenumber = patient.telecom[0].value;
               }
