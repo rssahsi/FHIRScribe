@@ -56,11 +56,11 @@
 
           var state = '';
           if (typeof patient.address[0].state !== 'undefined') {
-            line = patient.address[0].state;
+            state = patient.address[0].state;
           }
 
           var telecom = '123456';
-          var address = line + ", " + city + ", " + state
+          var address = line + ", " + city + ", " + state;
 
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
