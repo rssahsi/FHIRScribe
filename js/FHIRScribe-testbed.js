@@ -64,11 +64,16 @@
              We have to iterate through multiple telecom objects to find which are 
              "system: phone", and which is highest priority for a contact number.
              home >> mobile >> work >> other */
-             
+
           var homenumber = '';
           var mobilenumber = '';
 
-          console.log(Object.keys(patient.telecom[0]));
+          console.log(Object.keys(patient.telecom[0])); // system, value, use
+
+          $.each( patient.telecom, function (key, value) {
+            console.log (key + ": " + JSON.stringify(value));
+          });
+          
             if (typeof patient.telecom[0].value !== 'undefined') {
 
               var system = patient.telecom[0].system;
