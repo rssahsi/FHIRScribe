@@ -65,19 +65,11 @@
           /* Now we cobble together a sensible telephone number or two */
           var homenumber = '';
           var mobilenumber = '';
-            if (typeof patient.telecom[0].system !== 'undefined') {
-
-              if (typeof patient.telecom[0].system == 'phone') {
-
-                if (typeof patient.telecom[0].use == 'home') {
+            if (typeof patient.telecom[0].value !== 'undefined') {
                   homenumber = patient.telecom[0].value;
-                } else if (typeof patient.telecom[0].use == 'mobile') {
-                  mobilenumber = patient.telecom[0].value;
               }
-            }
-          }
 
-           var telecom = homenumber;
+          var telecom = homenumber;
 
 
           var height = byCodes('8302-2');
