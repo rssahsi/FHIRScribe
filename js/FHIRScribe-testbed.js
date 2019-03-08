@@ -13,14 +13,10 @@
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
         var pt = patient.read();
-        console.log(Object.getOwnPropertyNames(pt));
 
         var addy = smart.patient.api.fetchAll({
           type: 'Patient',
-          query: {
-            use: {
-              $or: ['address']
-            }
+          query: {address: }  
           }
         });
 
@@ -75,7 +71,7 @@
           p.fname = fname;
           p.lname = lname;
           //p.telecom = telecom; // I added this
-          p.address = address; // I added this
+          p.address = patient.address; // I added this
           p.height = getQuantityValueAndUnit(height[0]);
 
          
