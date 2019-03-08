@@ -11,6 +11,7 @@
     /* If there are specific observations to transfer to the document, call them here as well */
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
+        console.log(Object.getOwnPropertyNames(smart));
         var patient = smart.patient;
         var pt = patient.read();
 
@@ -23,7 +24,6 @@
           }
         });
 
-        console.log(Object.getOwnPropertyNames(addy));
 
                   var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
@@ -35,8 +35,6 @@
                       }
                     }
                   });
-
-                  console.log(Object.getOwnPropertyNames(obv));
 
         $.when(pt, obv).fail(onError);
 
