@@ -75,10 +75,15 @@
               if (patient.telecom[key].system == "phone") {
                 if (patient.telecom[key].use == "home") {
                   homenumber = patient.telecom[key].value;                  
+                } else if (patient.telecom[key].use == "mobile") {
+                  mobilenumber = patient.telecom[key].value;
                 }
               }
             } 
             });
+
+            var telecom = homenumber;
+            if (homenumber == '') var telecom = mobilenumber;
 
 //            if (typeof patient.telecom[0].value !== 'undefined') {
 //
