@@ -67,6 +67,12 @@
           var mobilenumber = '';
           console.log(Object.keys(patient.telecom[0]));
             if (typeof patient.telecom[0].value !== 'undefined') {
+
+              var system = patient.telecom[0].system;
+              var use = patient.telecom[0].use;
+
+              console.log("System is " + system + ". Use is " + use);
+
                   homenumber = patient.telecom[0].value;
               }
 
