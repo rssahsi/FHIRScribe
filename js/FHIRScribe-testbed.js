@@ -71,7 +71,7 @@
 
                 if (typeof patient.telecom[0].use == 'home') {
                   homenumber = patient.telecom[0].value;
-                } else if { (typeof patient.telecom[0].use == 'mobile')
+                } else if (typeof patient.telecom[0].use == 'mobile') {
                   mobilenumber = patient.telecom[0].value;
               }
             }
