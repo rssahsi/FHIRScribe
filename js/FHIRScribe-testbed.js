@@ -82,10 +82,6 @@
 
             }
 
-
-            console.log (key + ": " + JSON.stringify(value));
-          });
-
 //            if (typeof patient.telecom[0].value !== 'undefined') {
 //
 //             var system = patient.telecom[0].system;
