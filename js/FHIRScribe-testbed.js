@@ -78,9 +78,7 @@
                 }
               }
             } 
-
-
-            }
+            });
 
 //            if (typeof patient.telecom[0].value !== 'undefined') {
 //
