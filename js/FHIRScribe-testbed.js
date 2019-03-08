@@ -45,8 +45,8 @@
           } */
           
           var city = '';
-          if (typeof patient.address[0].city !== 'undefined') {
-              city = patient.address[0].city;
+          if (typeof patient.address[home].city !== 'undefined') {
+              city = patient.address[home].city;
           } 
 
           var line = '';
@@ -54,8 +54,13 @@
             line = patient.address[0].line.join(', ');
           }
 
+          var state = 'ON';
+          if (typeof patient.address[0].state !== 'undefined') {
+            line = patient.address[0].state;
+          }
+
           var telecom = '123456';
-          var address = line + ", " + city;
+          var address = line + ", " + city + ", " + state
 
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
