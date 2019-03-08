@@ -44,6 +44,7 @@
               telecom = patient.telecom[0].value.join(' ');
           } */
           
+          var city = '';
           if (typeof patient.address.city !== 'undefined') {
               city = patient.address.city;
           } 
