@@ -11,9 +11,9 @@
     /* If there are specific observations to transfer to the document, call them here as well */
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
-        console.log(Object.getOwnPropertyNames(smart));
         var patient = smart.patient;
         var pt = patient.read();
+        console.log(Object.getOwnPropertyNames(pt));
 
         var addy = smart.patient.api.fetchAll({
           type: 'Patient',
