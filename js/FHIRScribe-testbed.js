@@ -45,7 +45,7 @@
           } */
           
           if (typeof patient.address.city !== 'undefined') {
-              city = patient.address.city
+              city = patient.address.city;
           } */
 
           var telecom = '123456';
