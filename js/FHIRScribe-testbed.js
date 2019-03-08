@@ -49,8 +49,13 @@
               city = patient.address[0].city;
           } 
 
+          var line = '';
+          if (typeof patient.address[0].line !== 'undefined') {
+            line = patient.address[0].line.join(', ');
+          }
+
           var telecom = '123456';
-          var address = "1234 Bullshit Lane, " + city;
+          var address = line + ", " + city;
 
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
