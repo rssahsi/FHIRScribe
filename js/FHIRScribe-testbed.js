@@ -46,7 +46,7 @@
           
           if (typeof patient.address.city !== 'undefined') {
               city = patient.address.city;
-          } */
+          } 
 
           var telecom = '123456';
           var address = "1234 Bullshit Lane, " + city;
