@@ -25,6 +25,29 @@
         $.each (user, function (key, value) {
           console.log (key + ": " + JSON.stringify(value));
         });
+
+        var p = defaultUser();
+          p.birthdate = patient.birthDate;
+          p.gender = patient.gender;
+          p.firstname = pt_firstname;
+          p.givenname = pt_fullgivenname;
+          p.lastname = pt_lastname;
+          p.telecom = telecom; // I added this
+          p.address = address; // I added this
+//          p.height = getQuantityValueAndUnit(height[0]);
+         
+          if (typeof systolicbp != 'undefined')  {
+            p.systolicbp = systolicbp;
+          }
+
+          if (typeof diastolicbp != 'undefined') {
+            p.diastolicbp = diastolicbp;
+          } 
+
+          p.hdl = getQuantityValueAndUnit(hdl[0]);
+          p.ldl = getQuantityValueAndUnit(ldl[0]);
+
+          ret.resolve(p);
       }
 
 
@@ -149,6 +172,23 @@
   };
 
   function defaultPatient(){
+    return {
+      firstname: {value: ''},
+      givenname: {value: ''},
+      lastname: {value: ''},
+      gender: {value: ''},
+      birthdate: {value: ''},
+      telecom: {value: ''},
+      address: {value: ''},
+      height: {value: ''},
+      systolicbp: {value: ''},
+      diastolicbp: {value: ''}, 
+      ldl: {value: ''},
+      hdl: {value: ''},
+    };
+  }
+
+  function defaultUser(){
     return {
       firstname: {value: ''},
       givenname: {value: ''},
