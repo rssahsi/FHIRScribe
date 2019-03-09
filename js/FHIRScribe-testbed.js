@@ -38,7 +38,6 @@
         console.log("Smart Test Keys: " + testkeys);
 
         var userId = smart.userId;
-        var usr = userId.read();
 
                   /* wait! just how much shit is in that "smart" object we fetched? */
                   $.each( smart, function (key, value) {
