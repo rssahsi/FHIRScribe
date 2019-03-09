@@ -46,7 +46,7 @@
 
                     /* wait! just how much shit is in that 'obv' object we fetched? */
                     $.each(obv, function (key, value) {
-                      console.log ("Observations :" + key + ": " + JSON.stringify(value);
+                      console.log ("Observations :" + key + ": " + JSON.stringify(value));
                     });
                     /* this is just debugging code */
 
