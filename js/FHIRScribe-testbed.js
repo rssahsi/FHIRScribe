@@ -23,9 +23,8 @@
         var pt = patient.read();
 
         /* fetch relevant data from the 'Encounter' resource */
-        var enc = smart.patient.fetchAll({
-          type: 'Encounter',
-          query: {$everything}
+        var enc = smart.patient.api.fetchAll({
+          type: 'Encounter'
         });
 
                 /* wait! just how much shit is in that encounter object we fetched? */
