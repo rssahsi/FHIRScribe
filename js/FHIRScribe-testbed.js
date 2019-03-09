@@ -22,6 +22,18 @@
         var patient = smart.patient;
         var pt = patient.read();
 
+        /* fetch relevant data from the 'Encounter' resource */
+        var enc = smart.patient.fetchAll({
+          type: 'Encounter',
+          query: {$everything}
+        });
+
+                /* wait! just how much shit is in that encounter object we fetched? */
+                $.each( enc, function (key, value) {
+                  console.log (key + ": " + JSON.stringify(value));
+                });
+                /* this is just debugging code */
+
         /* fetch the relevant data from the 'Observation' resource */
                   var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
