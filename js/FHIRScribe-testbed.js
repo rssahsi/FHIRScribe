@@ -10,6 +10,13 @@
     /* The goal here is to read the FHIR resource and extract the demographic information for the current patient */
     /* If there are specific observations to transfer to the document, call them here as well */
     function onReady(smart)  {
+
+                /* wait! just how much shit is in that smart object we fetched? */
+                $.each( smart, function (key, value) {
+                  console.log (key + ": " + JSON.stringify(value));
+                });
+                /* this is just debugging code */
+
       if (smart.hasOwnProperty('patient')) {
         /* read the data in the 'patient' resouce */
         var patient = smart.patient;
@@ -34,9 +41,9 @@
           var byCodes = smart.byCodes(obv, 'code');
 
           /* wait! just how much shit is in that patient object we fetched? */
-          $.each( patient, function (key, value) {
-            console.log (key + ": " + JSON.stringify(value));
-          });
+          //$.each( patient, function (key, value) {
+          //  console.log (key + ": " + JSON.stringify(value));
+          //});
           /* this is just debugging code */
 
           /* compute patient name variables */
