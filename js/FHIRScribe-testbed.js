@@ -33,6 +33,8 @@
                     }
                   });
 
+                  console.log("User Identification: " + smart.userId);
+
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
