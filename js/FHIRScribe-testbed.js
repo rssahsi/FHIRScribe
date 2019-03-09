@@ -41,9 +41,15 @@
 
           /* wait! just how much shit is in that patient object we fetched? */
           $.each( patient, function (key, value) {
-            console.log ("Subroutine :" + key + ": " + JSON.stringify(value));
+            console.log ("Patient :" + key + ": " + JSON.stringify(value));
           });
           /* this is just debugging code */
+
+                    /* wait! just how much shit is in that 'obv' object we fetched? */
+                    $.each(obv, function (key, value) {
+                      console.log ("Observations :" + key + ": " + JSON.stringify(value));
+                    });
+                    /* this is just debugging code */
 
 
           /* compute patient name variables */
