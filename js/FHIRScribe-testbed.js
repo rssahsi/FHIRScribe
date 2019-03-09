@@ -33,7 +33,9 @@
                     }
                   });
 
-                  console.log("User Identification: " + smart.userId);
+        // what are the properties of "smart" anyway?
+        var testkeys = Object.keys(smart);
+        console.log("Smart Test Keys: " + testkeys);
 
         $.when(pt, obv).fail(onError);
 
