@@ -12,9 +12,9 @@
     function onReady(smart)  {
 
                 /* wait! just how much shit is in that smart object we fetched? */
-                $.each( smart, function (key, value) {
-                  console.log (key + ": " + JSON.stringify(value));
-                });
+                //$.each( smart, function (key, value) {
+                //  console.log (key + ": " + JSON.stringify(value));
+                //});
                 /* this is just debugging code */
 
       if (smart.hasOwnProperty('patient')) {
@@ -22,6 +22,12 @@
         var patient = smart.patient;
         var pt = patient.read();
         var userid = smart.user.read();
+
+                        /* wait! just how much shit is in that user object we fetched? */
+                        $.each( smart.user, function (key, value) {
+                          console.log (key + ": " + JSON.stringify(value));
+                        });
+                        /* this is just debugging code */
 
         /* fetch the relevant data from the 'Observation' resource */
 
@@ -75,8 +81,6 @@
 
           var homenumber = '';
           var mobilenumber = '';
-
-          console.log(Object.keys(patient.telecom[0])); // system, value, use
 
           $.each( patient.telecom, function (key, value) {
             if (typeof patient.telecom[key] !== 'undefined') {
