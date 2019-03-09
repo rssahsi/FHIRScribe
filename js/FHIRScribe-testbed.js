@@ -20,7 +20,7 @@
         /* read the data in the 'patient' context */
         var patient = smart.patient;
         var pt = patient.read();
-        var usr = smart.user.read();
+        var usr = '';
 
         /* fetch the relevant data from the 'Observation' resource */
                   var obv = smart.patient.api.fetchAll({
@@ -34,9 +34,9 @@
                     }
                   });
 
-        $.when(pt, obv, usr).fail(onError);
+        $.when(pt, obv).fail(onError);
 
-        $.when(pt, obv, usr).done(function(patient, obv, usr) {
+        $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
 
           /* wait! just how much shit is in that patient object we fetched? */
