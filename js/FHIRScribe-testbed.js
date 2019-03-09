@@ -7,18 +7,32 @@
       ret.reject();
     }
 
-    /* The goal here is to read the FHIR resource and extract the demographic information for the current patient */
-    /* If there are specific observations to transfer to the document, call them here as well */
+    //
+    // The goal here is to read the FHIR resource and extract the demographic information
+    // for the current patient, as well as information about the user making the request.
+    // If there are specific observations to transfer to the document, call them here as well
+    //
+
     function onReady(smart)  {
 
-                /* wait! just how much shit is in that smart object we fetched? */
-                //$.each( smart, function (key, value) {
-                //  console.log (key + ": " + JSON.stringify(value));
-                //});
-                /* this is just debugging code */
+      // additional test code
+      //
+      if (smart.hasOwnProperty('user')) {
+        // read the data in the 'user' context
+        var user = smart.user;
+        var usr = user.read();
+
+        $.each (user, function (key, value)) {
+          console.log (key + ": " + JSON.stringify(value));
+        }) ;
+      }
+
+
+
+
 
       if (smart.hasOwnProperty('patient')) {
-        /* read the data in the 'patient' resouce */
+        /* read the data in the 'patient' context */
         var patient = smart.patient;
         var pt = patient.read();
 
@@ -27,7 +41,7 @@
             console.log (key + ": " + JSON.stringify(value));
           });
           /* this is just debugging code */
-          
+
         /* fetch the relevant data from the 'Observation' resource */
                   var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
@@ -44,8 +58,6 @@
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
-
-
 
           /* compute patient name variables */
 
@@ -91,16 +103,6 @@
             var telecom = homenumber;
             if (homenumber == '') var telecom = mobilenumber;
 
-//            if (typeof patient.telecom[0].value !== 'undefined') {
-//
-//             var system = patient.telecom[0].system;
-//             var use = patient.telecom[0].use;
-//
-//              console.log("System is " + system + ". Use is " + use);
-//
-//                  homenumber = patient.telecom[0].value;
-//              }
-//
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
@@ -133,6 +135,12 @@
       } else {
         onError();
       }
+
+
+
+
+
+
     }
 
     FHIR.oauth2.ready(onReady, onError);
