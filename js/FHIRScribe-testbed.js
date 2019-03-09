@@ -22,17 +22,12 @@
         var patient = smart.patient;
         var pt = patient.read();
 
-        /* fetch relevant data from the 'Encounter' resource */
-        var enc = smart.patient.api.fetchAll({
-          type: 'Encounter'
-        });
-
-                /* wait! just how much shit is in that encounter object we fetched? */
-                $.each( enc, function (key, value) {
-                  console.log (key + ": " + JSON.stringify(value));
-                });
-                /* this is just debugging code */
-
+          /* wait! just how much shit is in that patient object we fetched? */
+          $.each( patient, function (key, value) {
+            console.log (key + ": " + JSON.stringify(value));
+          });
+          /* this is just debugging code */
+          
         /* fetch the relevant data from the 'Observation' resource */
                   var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
@@ -50,11 +45,7 @@
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
 
-          /* wait! just how much shit is in that patient object we fetched? */
-          $.each( patient, function (key, value) {
-            console.log (key + ": " + JSON.stringify(value));
-          });
-          /* this is just debugging code */
+
 
           /* compute patient name variables */
 
