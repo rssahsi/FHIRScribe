@@ -22,9 +22,9 @@
         var user = smart.user;
         var usr = user.read();
 
-        $.each (user, function (key, value)) {
+        $.each (user, function (key, value) {
           console.log (key + ": " + JSON.stringify(value));
-        }) ;
+        });
       }
 
 
