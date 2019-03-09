@@ -53,7 +53,7 @@
 
           /* wait! just how much shit is in that userId object we fetched? */
           $.each( user, function (key, value) {
-            console.log ("Patient :" + key + ": " + JSON.stringify(value));
+            console.log ("Patient :" + key + ": " + value);
           });
           /* this is just debugging code */
 
