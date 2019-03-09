@@ -37,7 +37,8 @@
         var testkeys = Object.keys(smart);
         console.log("Smart Test Keys: " + testkeys);
 
-        var userId = smart.userId;
+        var user = smart.user;
+        var usr = user.read();
 
                   /* wait! just how much shit is in that "smart" object we fetched? */
                   $.each( smart, function (key, value) {
@@ -47,11 +48,11 @@
 
         $.when(pt, obv, usr).fail(onError);
 
-        $.when(pt, obv, usr).done(function(patient, obv, userId) {
+        $.when(pt, obv, usr).done(function(patient, obv, user) {
           var byCodes = smart.byCodes(obv, 'code');
 
           /* wait! just how much shit is in that userId object we fetched? */
-          $.each( userId, function (key, value) {
+          $.each( user, function (key, value) {
             console.log ("Patient :" + key + ": " + JSON.stringify(value));
           });
           /* this is just debugging code */
