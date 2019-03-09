@@ -21,10 +21,8 @@
         /* read the data in the 'patient' resouce */
         var patient = smart.patient;
         var pt = patient.read();
-        var user = '';
 
         /* fetch the relevant data from the 'Observation' resource */
-
                   var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
                     query: {
@@ -116,7 +114,6 @@
           p.telecom = telecom; // I added this
           p.address = address; // I added this
 //          p.height = getQuantityValueAndUnit(height[0]);
-          p.user = user;
          
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -150,7 +147,7 @@
       birthdate: {value: ''},
       telecom: {value: ''},
       address: {value: ''},
-      user: {value: ''},
+      height: {value: ''},
       systolicbp: {value: ''},
       diastolicbp: {value: ''}, 
       ldl: {value: ''},
@@ -195,7 +192,7 @@
     $('#birthdate').html(p.birthdate);
     $('#address').html(p.address);
     $('#telecom').html(p.telecom);
-    $('#height').html(p.user);
+    $('#height').html(p.height);
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp); 
     $('#ldl').html(p.ldl);
