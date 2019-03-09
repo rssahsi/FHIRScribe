@@ -21,14 +21,7 @@
         /* read the data in the 'patient' resouce */
         var patient = smart.patient;
         var pt = patient.read();
-        var user = smart.user.read();
-
-
-                        /* wait! just how much shit is in that user object we fetched? */
-                        $.each(user, function (key, value) {
-                          console.log (key + ": " + JSON.stringify(value));
-                        });
-                        /* this is just debugging code */
+        var user = '';
 
         /* fetch the relevant data from the 'Observation' resource */
 
