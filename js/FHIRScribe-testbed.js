@@ -138,6 +138,14 @@
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
 
+    var currentUserFhirUrl;
+  
+    FHIR.oauth2.ready(function(fhirClient){
+    currentUserFhirUrl = fhirClient.userId;
+    });
+
+    console.log("CuurentUserFhirUrl: "+ currentUserFhirUrl);
+
   };
 
   function defaultPatient(){
