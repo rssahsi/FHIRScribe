@@ -20,7 +20,6 @@
         /* read the data in the 'patient' context */
         var patient = smart.patient;
         var pt = patient.read();
-        var usr = '';
 
         /* fetch the relevant data from the 'Observation' resource */
                   var obv = smart.patient.api.fetchAll({
@@ -47,7 +46,7 @@
 
                     /* wait! just how much shit is in that 'obv' object we fetched? */
                     $.each(obv, function (key, value) {
-                      console.log ("Observations :" + key + ": " + value);
+                      console.log ("Observations :" + key + ": " + JSON.stringify(value);
                     });
                     /* this is just debugging code */
 
