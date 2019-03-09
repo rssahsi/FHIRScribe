@@ -38,7 +38,7 @@
         console.log("Smart Test Keys: " + testkeys);
 
                   /* wait! just how much shit is in that "smart" object we fetched? */
-                  $.each( smart.api, function (key, value) {
+                  $.each( smart, function (key, value) {
                     console.log ("Smart :" + key + ": " + JSON.stringify(value));
                   });
                   /* this is just debugging code */
