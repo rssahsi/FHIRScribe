@@ -21,8 +21,7 @@
         /* read the data in the 'patient' resouce */
         var patient = smart.patient;
         var pt = patient.read();
-        var user = smart.patient.api.fetchAll ({
-          type: 'Practitioner'});
+        var user = smart.user.fetchAll();
 
 
                         /* wait! just how much shit is in that user object we fetched? */
@@ -158,7 +157,7 @@
       birthdate: {value: ''},
       telecom: {value: ''},
       address: {value: ''},
-      userid: {value: ''},
+      user: {value: ''},
       systolicbp: {value: ''},
       diastolicbp: {value: ''}, 
       ldl: {value: ''},
@@ -203,7 +202,7 @@
     $('#birthdate').html(p.birthdate);
     $('#address').html(p.address);
     $('#telecom').html(p.telecom);
-    $('#height').html(p.userid);
+    $('#height').html(p.user);
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp); 
     $('#ldl').html(p.ldl);
