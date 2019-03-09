@@ -19,7 +19,7 @@
       //
       if (smart.hasOwnProperty('client')) {
         // read the data in the 'user' context
-        var user = smart.clinet;
+        var user = smart.client;
         var usr = client.read();
 
         $.each (user, function (key, value) {
