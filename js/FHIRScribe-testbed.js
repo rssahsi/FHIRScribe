@@ -37,6 +37,12 @@
         var testkeys = Object.keys(smart);
         console.log("Smart Test Keys: " + testkeys);
 
+                  /* wait! just how much shit is in that "smart" object we fetched? */
+                  $.each( smart, function (key, value) {
+                    console.log ("Smart :" + key + ": " + JSON.stringify(value));
+                  });
+                  /* this is just debugging code */
+
         $.when(pt, obv).fail(onError);
 
         $.when(pt, obv).done(function(patient, obv) {
