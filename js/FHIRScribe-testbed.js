@@ -21,11 +21,12 @@
         /* read the data in the 'patient' resouce */
         var patient = smart.patient;
         var pt = patient.read();
-        var user = smart.userId;
-        var usr = user.read();
+        var user = smart.patient.api.fetchAll ({
+          type: 'Practitioner'});
+
 
                         /* wait! just how much shit is in that user object we fetched? */
-                        $.each( smart.userId, function (key, value) {
+                        $.each( smart.user, function (key, value) {
                           console.log (key + ": " + JSON.stringify(value));
                         });
                         /* this is just debugging code */
