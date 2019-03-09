@@ -15,44 +15,6 @@
 
     function onReady(smart)  {
 
-      // additional test code
-      //
-      if (smart.hasOwnProperty('client')) {
-        // read the data in the 'user' context
-        var user = smart.client;
-        var usr = client.read();
-
-        $.each (user, function (key, value) {
-          console.log ("UserId: " + client.user);
-        });
-
-        var p = defaultUser();
-          p.birthdate = patient.birthDate;
-          p.gender = patient.gender;
-          p.firstname = pt_firstname;
-          p.givenname = pt_fullgivenname;
-          p.lastname = pt_lastname;
-          p.telecom = telecom; // I added this
-          p.address = address; // I added this
-//          p.height = getQuantityValueAndUnit(height[0]);
-         
-          if (typeof systolicbp != 'undefined')  {
-            p.systolicbp = systolicbp;
-          }
-
-          if (typeof diastolicbp != 'undefined') {
-            p.diastolicbp = diastolicbp;
-          } 
-
-          p.hdl = getQuantityValueAndUnit(hdl[0]);
-          p.ldl = getQuantityValueAndUnit(ldl[0]);
-
-          ret.resolve(p);
-      }
-
-
-
-
 
       if (smart.hasOwnProperty('patient')) {
         /* read the data in the 'patient' context */
