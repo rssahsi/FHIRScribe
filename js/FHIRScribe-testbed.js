@@ -17,13 +17,13 @@
 
       // additional test code
       //
-      if (smart.hasOwnProperty('user')) {
+      if (smart.hasOwnProperty('client')) {
         // read the data in the 'user' context
-        var user = smart.user;
-        var usr = user.read();
+        var user = smart.clinet;
+        var usr = client.read();
 
         $.each (user, function (key, value) {
-          console.log (key + ": " + JSON.stringify(value));
+          console.log ("UserId: " + client.user);
         });
 
         var p = defaultUser();
