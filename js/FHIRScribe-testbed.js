@@ -19,7 +19,6 @@
       if (smart.hasOwnProperty('patient')) {
         /* read the data in the 'patient' context */
         var patient = smart.patient;
-        var user = smart.user;
         var pt = patient.read();
         var usr = smart.user.read();
 
