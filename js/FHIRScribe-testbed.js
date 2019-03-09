@@ -22,7 +22,7 @@
         var pt = patient.read();
 
           /* wait! just how much shit is in that patient object we fetched? */
-          $.each( patient, function (key, value) {
+          $.each( pt, function (key, value) {
             console.log (key + ": " + JSON.stringify(value));
           });
           /* this is just debugging code */
