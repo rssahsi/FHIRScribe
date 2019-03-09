@@ -37,19 +37,22 @@
         var testkeys = Object.keys(smart);
         console.log("Smart Test Keys: " + testkeys);
 
+        var userId = smart.userId;
+        var usr = userId.read();
+
                   /* wait! just how much shit is in that "smart" object we fetched? */
                   $.each( smart, function (key, value) {
                     console.log ("Smart :" + key + ": " + JSON.stringify(value));
                   });
                   /* this is just debugging code */
 
-        $.when(pt, obv).fail(onError);
+        $.when(pt, obv, usr).fail(onError);
 
-        $.when(pt, obv).done(function(patient, obv) {
+        $.when(pt, obv, usr).done(function(patient, obv, userId) {
           var byCodes = smart.byCodes(obv, 'code');
 
-          /* wait! just how much shit is in that patient object we fetched? */
-          $.each( patient, function (key, value) {
+          /* wait! just how much shit is in that userId object we fetched? */
+          $.each( userId, function (key, value) {
             console.log ("Patient :" + key + ": " + JSON.stringify(value));
           });
           /* this is just debugging code */
