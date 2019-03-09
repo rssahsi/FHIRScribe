@@ -135,13 +135,6 @@
 
     }
 
-    var currentUserFhirUrl;
-  
-    FHIR.oauth2.ready(function(fhirClient){
-    currentUserFhirUrl = fhirClient.userId;
-    console.log("CurentUserFhirUrl: " + currentUserFhirUrl);
-    });
-
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
 
