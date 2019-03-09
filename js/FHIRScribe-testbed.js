@@ -51,9 +51,9 @@
           var byCodes = smart.byCodes(obv, 'code');
 
           /* wait! just how much shit is in that patient object we fetched? */
-          //$.each( patient, function (key, value) {
-          //  console.log (key + ": " + JSON.stringify(value));
-          //});
+          $.each( patient, function (key, value) {
+            console.log (key + ": " + JSON.stringify(value));
+          });
           /* this is just debugging code */
 
           /* compute patient name variables */
