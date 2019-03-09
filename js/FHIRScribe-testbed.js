@@ -44,6 +44,13 @@
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
 
+          /* wait! just how much shit is in that patient object we fetched? */
+          $.each( pt, function (key, value) {
+            console.log ((Subroutine :" + key + ": " + JSON.stringify(value));
+          });
+          /* this is just debugging code */
+
+
           /* compute patient name variables */
 
           var pt_firstname = ''; var pt_fullgivenname = ''; var pt_lastname = '';
