@@ -21,7 +21,7 @@
         /* read the data in the 'patient' resouce */
         var patient = smart.patient;
         var pt = patient.read();
-        var user = smart.user.fetchAll();
+        var user = smart.user.read();
 
 
                         /* wait! just how much shit is in that user object we fetched? */
