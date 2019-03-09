@@ -21,11 +21,11 @@
         /* read the data in the 'patient' resouce */
         var patient = smart.patient;
         var pt = patient.read();
-        var user = smart.user;
+        var user = smart.userId;
         var usr = user.read();
 
                         /* wait! just how much shit is in that user object we fetched? */
-                        $.each( smart.user, function (key, value) {
+                        $.each( smart.userId, function (key, value) {
                           console.log (key + ": " + JSON.stringify(value));
                         });
                         /* this is just debugging code */
