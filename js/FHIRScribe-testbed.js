@@ -37,8 +37,8 @@
         var testkeys = Object.keys(smart);
         console.log("Smart Test Keys: " + testkeys);
 
-        var usr = smart.user;
-        console.log(smart.user);
+        var usr = smart.userId;
+        console.log(smart.userId);
         //var usr = user.read();
 
                   /* wait! just how much shit is in that "smart" object we fetched? */
