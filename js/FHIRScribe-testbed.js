@@ -21,7 +21,7 @@
         /* read the data in the 'patient' resouce */
         var patient = smart.patient;
         var pt = patient.read();
-        var userid = userId.read();
+        var userid = smart.userId.read();
 
         /* fetch the relevant data from the 'Observation' resource */
 
