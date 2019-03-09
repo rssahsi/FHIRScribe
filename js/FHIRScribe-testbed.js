@@ -21,6 +21,7 @@
         /* read the data in the 'patient' resouce */
         var patient = smart.patient;
         var pt = patient.read();
+        var userid = smart.userId;
 
         /* fetch the relevant data from the 'Observation' resource */
 
@@ -151,7 +152,7 @@
       birthdate: {value: ''},
       telecom: {value: ''},
       address: {value: ''},
-      height: {value: ''},
+      userId: {value: ''},
       systolicbp: {value: ''},
       diastolicbp: {value: ''}, 
       ldl: {value: ''},
@@ -196,7 +197,7 @@
     $('#birthdate').html(p.birthdate);
     $('#address').html(p.address);
     $('#telecom').html(p.telecom);
-    $('#height').html(p.height);
+    $('#height').html(p.userId);
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp); 
     $('#ldl').html(p.ldl);
