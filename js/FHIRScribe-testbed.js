@@ -26,7 +26,7 @@
 
 
                         /* wait! just how much shit is in that user object we fetched? */
-                        $.each( smart.user, function (key, value) {
+                        $.each(user, function (key, value) {
                           console.log (key + ": " + JSON.stringify(value));
                         });
                         /* this is just debugging code */
