@@ -123,7 +123,7 @@
           p.telecom = telecom; // I added this
           p.address = address; // I added this
 //          p.height = getQuantityValueAndUnit(height[0]);
-          p.userid = userid;
+          p.user = user;
          
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
