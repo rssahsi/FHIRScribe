@@ -142,9 +142,10 @@
   
     FHIR.oauth2.ready(function(fhirClient){
     currentUserFhirUrl = fhirClient.userId;
+    console.log("CuurentUserFhirUrl: "+ currentUserFhirUrl);
     });
 
-    console.log("CuurentUserFhirUrl: "+ currentUserFhirUrl);
+    
 
   };
 
