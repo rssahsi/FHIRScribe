@@ -39,14 +39,6 @@
               console.log ("Captured User Data:" + JSON.stringify(user) + "::" + userId);
               });
           
-          // fetch the practitioner data for the current user
-          $when (smart.api.read)
-          var practitioner = smart.api.read({ 
-            type: 'Practitioner', 
-            id: userIdSections[userIdSections.length-1]
-           });
-
-          console.log("Practitioner Data for " + userIdSections[userIdSections.length-1] + " :: " + JSON.stringify(practitioner));
  
         /* fetch the relevant data from the 'Observation' resource */
                   var obv = smart.patient.api.fetchAll({
