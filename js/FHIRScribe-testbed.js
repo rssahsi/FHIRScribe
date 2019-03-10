@@ -30,6 +30,14 @@
         $.when (smart.api.read({ type: userIdSections[userIdSections.length-2], id: userIdSections[userIdSections.length-1]}))
           .done(function(userResult) {
             console.log("User Data Grab: " + JSON.stringify(userResult.data));
+            console.log("");
+            
+                  /* wait! just how much shit is in that userResult.data object we fetched? */
+                  $.each( userResult.data, function (key, value) {
+                    console.log ("User Data Parse: " + key + " : " + JSON.stringify(value));
+                  });
+                  /* this is just debugging code */
+
             var user = {name: ""};
               if (userResult.data.resourceType === "Patient") {
                 var patientName = userResult.data && userResult.data.name && userResult.data.name[0];
