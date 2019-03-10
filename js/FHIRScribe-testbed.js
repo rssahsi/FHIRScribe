@@ -157,6 +157,9 @@ var FHIRfields = "";
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
 
+          FHIRfile = p.givenname;
+          console.log(FHIRfile);
+
           ret.resolve(p);
         });
       } else {
