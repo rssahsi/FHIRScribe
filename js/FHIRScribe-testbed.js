@@ -20,8 +20,12 @@
         /* read the data in the 'patient' context */
         var patient = smart.patient;
         var pt = patient.read();
-        var user = smart.userId;
 
+        // read the data for the currently logged in user
+        // this information is grabbed from the user/*.* context, that Cerner hates
+        var user = smart.userId; 
+        console.log ("Smart User Identification:" + user);
+ 
         /* fetch the relevant data from the 'Observation' resource */
                   var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
@@ -34,14 +38,15 @@
                     }
                   });
 
+
         // what are the properties of "smart" anyway?
-        var testkeys = Object.keys(smart);
-        console.log("Smart Test Keys: " + testkeys);
+        //var testkeys = Object.keys(smart);
+        //console.log("Smart Test Keys: " + testkeys);
 
                   /* wait! just how much shit is in that "smart" object we fetched? */
-                  $.each( smart, function (key, value) {
-                    console.log ("Smart :" + key + ": " + JSON.stringify(value));
-                  });
+                  //$.each( smart, function (key, value) {
+                  //  console.log ("Smart :" + key + ": " + JSON.stringify(value));
+                  //});
                   /* this is just debugging code */
 
         $.when(pt, obv, user).fail(onError);
@@ -50,13 +55,12 @@
           var byCodes = smart.byCodes(obv, 'code');
 
                     /* wait! just how much shit is in that 'obv' object we fetched? */
-                    $.each(obv, function (key, value) {
-                      console.log ("Observations :" + key + ": " + JSON.stringify(value));
-                    });
+                    //$.each(obv, function (key, value) {
+                    //  console.log ("Observations :" + key + ": " + JSON.stringify(value));
+                    //});
                     /* this is just debugging code */
 
                     console.log("User Identification:" + user);
-
 
           /* compute patient name variables */
 
