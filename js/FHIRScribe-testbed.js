@@ -1,4 +1,5 @@
-var FHIRfile = "";
+var FHIRfile = ('%FDF-1.2\n\%xxxx\n1 0 obj\n\<\<\n\/FDF');
+
 var FHIRfields = "";
 
 (function(window){
