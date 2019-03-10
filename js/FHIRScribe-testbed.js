@@ -1,3 +1,6 @@
+var FHIRfile = "";
+var FHIRfields = "";
+
 (function(window){
   window.extractData = function() {
     var ret = $.Deferred();
