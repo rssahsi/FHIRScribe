@@ -29,6 +29,7 @@
 
         $.when (smart.api.read({ type: userIdSections[userIdSections.length-2], id: userIdSections[userIdSections.length-1]}))
           .done(function(userResult) {
+            console.log("User Data Grab: " + JSON.stringify(userResult.data));
             var user = {name: ""};
               if (userResult.data.resourceType === "Patient") {
                 var patientName = userResult.data && userResult.data.name && userResult.data.name[0];
@@ -39,6 +40,7 @@
               });
           
           // fetch the practitioner data for the current user
+          $when (smart.api.read)
           var practitioner = smart.api.read({ 
             type: 'Practitioner', 
             id: userIdSections[userIdSections.length-1]
