@@ -23,8 +23,22 @@
 
         // read the data for the currently logged in user
         // this information is grabbed from the user/*.* context, that Cerner hates
-        var user = smart.userId; 
-        console.log ("Smart User Identification:" + user);
+        var userId = smart.userId; 
+        console.log ("Smart User Identification:" + userId);
+        var userIdSections = user.split("/");
+
+        $.when (var usr = smart.api.read({ type: userIdSections[userIdSections.length-2], id: userIdSections[userIdSections.length-1]});
+          .done(function(userResult) {
+            var user = {name: ""};
+              if (userResult.data.resourceType === "Patient") {
+                var patientName = userResult.data && userResult.data.name && userResult.data.name[0];
+                user.name = patientName.given.join(" ") + " " patientName.family.join(" ").trim();
+                }
+              user.id = userResult.data.id;
+              console.log ("Captured User Data:" + user + "::" + userId);
+              }
+          }
+
  
         /* fetch the relevant data from the 'Observation' resource */
                   var obv = smart.patient.api.fetchAll({
@@ -49,15 +63,15 @@
                   //});
                   /* this is just debugging code */
 
-        $.when(pt, obv, user).fail(onError);
+        $.when(pt, obv, usr).fail(onError);
 
-        $.when(pt, obv, user).done(function(patient, obv, user) {
+        $.when(pt, obv, usr).done(function(patient, obv, usr) {
           var byCodes = smart.byCodes(obv, 'code');
 
-                    /* wait! just how much shit is in that 'obv' object we fetched? */
-                    //$.each(obv, function (key, value) {
-                    //  console.log ("Observations :" + key + ": " + JSON.stringify(value));
-                    //});
+                    /* wait! just how much shit is in that 'usr' object we fetched? */
+                    $.each(obv, function (key, value) {
+                      console.log ("Observations :" + key + ": " + JSON.stringify(value));
+                    });
                     /* this is just debugging code */
 
                     console.log("User Identification:" + user);
