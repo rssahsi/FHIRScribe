@@ -160,7 +160,7 @@ var FHIRfields = "";
           p.ldl = getQuantityValueAndUnit(ldl[0]);
 
           FHIRfile = FHIRfile + "\n" + "\<\<\/T\(Patient Name\)\/V("+ p.givenname + " " + p.lastname +"\)\>\>";
-          FHIRfile = FHIRfile = "\n" + FHIRfooter;
+          FHIRfile = FHIRfile + "\n" + FHIRfooter;
           console.log(FHIRfile);
 
           ret.resolve(p);
