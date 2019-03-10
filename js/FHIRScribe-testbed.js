@@ -35,7 +35,7 @@
                 user.name = patientName.given.join(" ") + " " + patientName.family.join(" ").trim();
                 }
               user.id = userResult.data.id;
-              console.log ("Captured User Data:" + user + "::" + userId);
+              console.log ("Captured User Data:" + JSON.stringify(user) + "::" + userId);
               });
           
 
@@ -63,9 +63,9 @@
                   //});
                   /* this is just debugging code */
 
-        $.when(pt, obv, usr).fail(onError);
+        $.when(pt, obv, userId).fail(onError);
 
-        $.when(pt, obv, usr).done(function(patient, obv, usr) {
+        $.when(pt, obv, userId).done(function(patient, obv, userId) {
           var byCodes = smart.byCodes(obv, 'code');
 
                     /* wait! just how much shit is in that 'usr' object we fetched? */
@@ -74,7 +74,7 @@
                     });
                     /* this is just debugging code */
 
-                    console.log("User Identification:" + user);
+                    console.log("User Identification:" + userId);
 
           /* compute patient name variables */
 
