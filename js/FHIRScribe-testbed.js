@@ -1,5 +1,5 @@
 var FHIRfile = ('%FDF-1.2\n\%xxxx\n1 0 obj\n\<\<\n\/FDF \<\<\/Fields \[');
-var FHIRfooter = ('\]\n\n\>\>\n\nendobj\ntrailer\n\<\<\/Root 1 0 R\>\>\n\%\%EOF');
+var FHIRfooter = ('\]\n\n\>\>\n\>\>\n\nendobj\ntrailer\n\<\<\/Root 1 0 R\>\>\n\%\%EOF');
 
 var FHIRfields = "";
 
