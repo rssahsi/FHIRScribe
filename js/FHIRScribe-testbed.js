@@ -25,9 +25,9 @@
         // this information is grabbed from the user/*.* context, that Cerner hates
         var userId = smart.userId; 
         console.log ("Smart User Identification:" + userId);
-        var userIdSections = user.split("/");
+        var userIdSections = userId.split("/");
 
-        $.when (var usr = smart.api.read({ type: userIdSections[userIdSections.length-2], id: userIdSections[userIdSections.length-1]});
+        $.when (smart.api.read({ type: userIdSections[userIdSections.length-2], id: userIdSections[userIdSections.length-1]}))
           .done(function(userResult) {
             var user = {name: ""};
               if (userResult.data.resourceType === "Patient") {
@@ -36,8 +36,8 @@
                 }
               user.id = userResult.data.id;
               console.log ("Captured User Data:" + user + "::" + userId);
-              }
-          }
+              });
+          
 
  
         /* fetch the relevant data from the 'Observation' resource */
