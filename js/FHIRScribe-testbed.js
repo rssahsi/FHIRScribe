@@ -20,6 +20,8 @@
         /* read the data in the 'patient' context */
         var patient = smart.patient;
         var pt = patient.read();
+        var user = smart.userId;
+        var usr = user.read();
 
         /* fetch the relevant data from the 'Observation' resource */
                   var obv = smart.patient.api.fetchAll({
@@ -37,10 +39,6 @@
         var testkeys = Object.keys(smart);
         console.log("Smart Test Keys: " + testkeys);
 
-        var usr = smart.userId;
-        console.log("Smart.user:" + smart.user);
-        //var usr = user.read();
-
                   /* wait! just how much shit is in that "smart" object we fetched? */
                   $.each( smart, function (key, value) {
                     console.log ("Smart :" + key + ": " + JSON.stringify(value));
@@ -49,7 +47,7 @@
 
         $.when(pt, obv, usr).fail(onError);
 
-        $.when(pt, obv, usr).done(function(patient, obv, usr) {
+        $.when(pt, obv, usr).done(function(patient, obv, user) {
           var byCodes = smart.byCodes(obv, 'code');
 
                     /* wait! just how much shit is in that 'obv' object we fetched? */
@@ -57,6 +55,8 @@
                       console.log ("Observations :" + key + ": " + JSON.stringify(value));
                     });
                     /* this is just debugging code */
+
+                    console.log("User Identification:" + user);
 
 
           /* compute patient name variables */
