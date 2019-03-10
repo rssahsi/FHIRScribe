@@ -71,10 +71,10 @@
         $.when(pt, obv, userId).done(function(patient, obv, userId) {
           var byCodes = smart.byCodes(obv, 'code');
 
-                    /* wait! just how much shit is in that 'usr' object we fetched? */
-                    $.each(obv, function (key, value) {
-                      console.log ("Observations :" + key + ": " + JSON.stringify(value));
-                    });
+                    /* wait! just how much shit is in that obv object we fetched? */
+                    //$.each(obv, function (key, value) {
+                    //  console.log ("Observations :" + key + ": " + JSON.stringify(value));
+                    //});
                     /* this is just debugging code */
 
                     console.log("User Identification:" + userId);
