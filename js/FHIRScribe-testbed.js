@@ -41,9 +41,7 @@
           // fetch the practitioner data for the current user
           var practitioner = smart.api.read({ 
             type: 'Practitioner', 
-            query: {
-              id: userIdSections[userIdSections.length-1]
-              }
+            id: userIdSections[userIdSections.length-1]
            });
 
           console.log("Practitioner Data for " + userIdSections[userIdSections.length-1] + " :: " + JSON.stringify(practitioner));
