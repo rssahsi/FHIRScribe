@@ -39,9 +39,14 @@
               });
           
           // fetch the practitioner data for the current user
-          var practitioner = smart.api.read({ type: 'Practitioner', id: userIdSections[userIdSections.length-1]});
+          var practitioner = smart.api.fetchAll({ 
+            type: 'Practitioner', 
+            query: {
+              id: userIdSections[userIdSections.length-1]
+              }
+           });
 
-          console.log("Practitioner Data:" + JSON.stringify(practitioner));
+          console.log("Practitioner Data for " + userIdSections[userIdSections.length-1] + " :: " + JSON.stringify(practitioner));
  
         /* fetch the relevant data from the 'Observation' resource */
                   var obv = smart.patient.api.fetchAll({
