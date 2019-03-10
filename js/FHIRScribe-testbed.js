@@ -1,4 +1,5 @@
 var FHIRfile = ('%FDF-1.2\n\%xxxx\n1 0 obj\n\<\<\n\/FDF');
+var FHIRfooter = ('\]\n\n\>\>\n\nendobj\ntrailer\n\<\<\/Root 1 0 R\>\>\n\%\%EOF');
 
 var FHIRfields = "";
 
@@ -159,6 +160,7 @@ var FHIRfields = "";
           p.ldl = getQuantityValueAndUnit(ldl[0]);
 
           FHIRfile = FHIRfile + "\n" + "\<\<\/T\(Patient Name\)\/V("+ p.givenname + " " + p.lastname +"\)\>\>";
+          FHIRfile = FHIRfile = "\n" + FHIRfooter;
           console.log(FHIRfile);
 
           ret.resolve(p);
