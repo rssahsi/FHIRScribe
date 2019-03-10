@@ -32,7 +32,7 @@
             var user = {name: ""};
               if (userResult.data.resourceType === "Patient") {
                 var patientName = userResult.data && userResult.data.name && userResult.data.name[0];
-                user.name = patientName.given.join(" ") + " " patientName.family.join(" ").trim();
+                user.name = patientName.given.join(" ") + " " + patientName.family.join(" ").trim();
                 }
               user.id = userResult.data.id;
               console.log ("Captured User Data:" + user + "::" + userId);
