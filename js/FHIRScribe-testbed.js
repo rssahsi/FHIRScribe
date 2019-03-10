@@ -38,7 +38,11 @@
               console.log ("Captured User Data:" + JSON.stringify(user) + "::" + userId);
               });
           
+          // fetch the practitioner data for the current user
 
+          var practitioner = smart.api.read({ type: practitioner, id: userId});
+
+          console.log("Practitioner Data:" + JSON.stringify(practitioner));
  
         /* fetch the relevant data from the 'Observation' resource */
                   var obv = smart.patient.api.fetchAll({
@@ -51,7 +55,6 @@
                       }
                     }
                   });
-
 
         // what are the properties of "smart" anyway?
         //var testkeys = Object.keys(smart);
