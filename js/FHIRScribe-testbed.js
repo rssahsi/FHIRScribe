@@ -108,7 +108,7 @@ var dataMap = {
 
           //read the AllergyIntolerances Data
           //
-          $.when (smart.api.read({ type: 'AllergyIntolerance '}))
+          $.when (smart.api.read({ type: 'AllergyIntolerance', id: patient.id }))
             .done(function(allergyResult) {
               console.log("");
               console.log("Allergy Data Grab: " + JSON.stringify(allergyResult.data));
