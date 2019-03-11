@@ -4,6 +4,12 @@
 
 var dataMap = {
   patient: {
+    name: {
+      first = '',
+      fullgiven = '',
+      last = '',
+      complete = ''
+    },
     firstname: '',
     fullgivenname: '',
     lastname: '',
@@ -106,9 +112,9 @@ var dataMap = {
           //var pt_firstname = ''; var pt_fullgivenname = ''; var pt_lastname = '';
 
           if (typeof patient.name[0] !== 'undefined') {   
-            dataMap.patient.firstname = patient.name[0].given[0];
-            dataMap.patient.fullgivenname = patient.name[0].given.join(' ');
-            dataMap.patient.lastname = patient.name[0].family.join(' ');
+            dataMap.patient.name.first = patient.name[0].given[0];
+            dataMap.patient.name.fullgiven = patient.name[0].given.join(' ');
+            dataMap.patient.name.last = patient.name[0].family.join(' ');
           }
 
           /* Presume the first address object is the only one that matters
@@ -154,11 +160,11 @@ var dataMap = {
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           p.gender = patient.gender;
-          p.firstname = dataMap.patient.firstname;
-          p.givenname = dataMap.patient.fullgivenname;
-          p.lastname = dataMap.patient.lastname;
+          p.firstname = dataMap.patient.name.first;
+          p.givenname = dataMap.patient.name.fullgiven;
+          p.lastname = dataMap.patient.name.last;
           p.telecom = telecom; // I added this
-          p.address = dataMap.patient.addess.complete; // I added this
+          p.address = dataMap.patient.address.complete; // I added this
 //          p.height = getQuantityValueAndUnit(height[0]);
          
           if (typeof systolicbp != 'undefined')  {
