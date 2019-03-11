@@ -1,6 +1,9 @@
-// DataMap object that contains the structure of the internal variables
-// will subsequently be mapped to the fields of the resulting PDF
-// based on the structure in the master.json
+// FHIRScribe
+//
+
+// The 'dataMap; object keeps the data grabbed from the FHIR server organized.
+// These values are made available to the resulting PDF
+// based on the assignment structure in the master.json
 
 var dataMap = {
   patient: {
@@ -26,6 +29,19 @@ var dataMap = {
       mobile: '',
       email: ''
     }
+  },
+  user: {
+    id: '',
+    name: {
+      first: '',
+      fullgiven: '',
+      last: '',
+      suffix: '',
+      text: '',
+      complete: ''
+    },
+    pracRole: '',
+
   }
 };
 
@@ -38,25 +54,24 @@ var dataMap = {
       ret.reject();
     }
 
-    //
-    // The goal here is to read the FHIR resource and extract the demographic information
-    // for the current patient, as well as information about the user making the request.
-    // If there are specific observations to transfer to the document, call them here as well
-    //
+    // When the connection is established, read the FHIR resources.
+    // Then extract the demographic information for the current patient, as well as about
+    // the user making the request.
+    // There are a smattering of other datapoints of interest which will be called as well.
 
     function onReady(smart)  {
 
 
       if (smart.hasOwnProperty('patient')) {
-        /* read the data in the 'patient' context */
+        // read the data in the 'patient' context
         var patient = smart.patient;
         var pt = patient.read();
 
         // read the data for the currently logged in user
         // this information is grabbed from the user/*.* context, that Cerner hates
-        var userId = smart.userId; 
-        console.log ("Smart User Identification:" + userId);
-        var userIdSections = userId.split("/");
+        dataMap.user.id = smart.userId; 
+        console.log ("Smart User Identification:" + dataMap.user.id);
+        var userIdSections = dataMap.user.id.split("/");
 
         $.when (smart.api.read({ type: userIdSections[userIdSections.length-2], id: userIdSections[userIdSections.length-1]}))
           .done(function(userResult) {
@@ -68,10 +83,14 @@ var dataMap = {
                     console.log ("User Data Parse: " + key + " : " + JSON.stringify(value));
                   });
                   /* this is just debugging code */
+                  
+                  console.log ("");
+                  console.log ("Hi my name is" + userResult.data.name.given);
 
             var user = {name: ""};
               if (userResult.data.resourceType === "Patient") {
                 var patientName = userResult.data && userResult.data.name && userResult.data.name[0];
+                dataMap.user.name.first = 
                 user.name = patientName.given.join(" ") + " " + patientName.family.join(" ").trim();
                 }
               user.id = userResult.data.id;
