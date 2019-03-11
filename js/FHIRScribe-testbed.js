@@ -6,16 +6,16 @@ var dataMap = {
   patient: {
     firstname: '',
     fullgivenname: '',
-    lastname: ''
-    },
-  address: {
-    line: '',
-    city: '',
-    state: '',
-    postalCode: '',
-    complete: ''
-    },
-  };
+    lastname: '',
+    address: {
+      line: '',
+      city: '',
+      state: '',
+      postalCode: '',
+      complete: ''
+      },
+  }
+};
 
 (function(window){
   window.extractData = function() {
