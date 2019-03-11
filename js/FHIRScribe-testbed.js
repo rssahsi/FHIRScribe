@@ -131,23 +131,33 @@ var dataMap = {
 
           /* Now we cobble together a sensible telephone number or two.
              We have to iterate through multiple telecom objects to find which are 
-             "system: phone", and which is highest priority for a contact number.
-             home >> mobile >> work >> other */
+             "system: phone", and which is highest priority for a primary contact number.
+             home >> mobile >> work  */
 
           $.each( patient.telecom, function (key, value) {
             if (typeof patient.telecom[key] !== 'undefined') {
               if (patient.telecom[key].system == "phone") {
                 if (patient.telecom[key].use == "home") {
-                  homenumber = patient.telecom[key].value;                  
+                  dataMap.patient.telecom.home = patient.telecom[key].value;                  
                 } else if (patient.telecom[key].use == "mobile") {
-                  mobilenumber = patient.telecom[key].value;
+                  dataMap.patient.telecom.mobile = patient.telecom[key].value;
+                } else if (patient.telecom[key].use == "work") {
+                  dataMap.patient.telecom.work = patient.telecom[key].value;
                 }
               }
             } 
             });
 
-            var telecom = homenumber;
-            if (homenumber == '') var telecom = mobilenumber;
+            if (dataMap.patient.telecom.work !== '') {
+              dataMap.patient.telecom.primary = dataMap.patient.telecom.work;
+            }
+
+            if (dataMap.patient.telecom.mobile !== '') {
+              dataMap.patient.telecom.primary = dataMap.patient.telecom.mobile;
+            }
+            if (dataMap.patient.telecom.home !== '') {
+              dataMap.patient.telecom.primary = dataMap.patient.telecom.home;
+            }
 
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
@@ -161,7 +171,7 @@ var dataMap = {
           p.firstname = dataMap.patient.name.first;
           p.givenname = dataMap.patient.name.fullgiven;
           p.lastname = dataMap.patient.name.last;
-          p.telecom = telecom; // I added this
+          p.telecom = dataMap.patient.telecom.primary; // I added this
           p.address = dataMap.patient.address.complete; // I added this
 //          p.height = getQuantityValueAndUnit(height[0]);
          
@@ -191,7 +201,7 @@ var dataMap = {
     var fields = {
       'aaa' : [dataMap.patient.name.fullgiven + " " + dataMap.patient.name.last.toUpperCase()],
       'bbb' : [dataMap.patient.address.complete, 'betatwo'],
-      'xxx' : 'this field does not exist',
+      'ccc' : [dataMap.patient.telecom.primary]
       'ggg' : [true] // checkbox gonna checkbox
     };
   
