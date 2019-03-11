@@ -167,11 +167,12 @@
   // PDF Code Fuckery FTW
   //
 
+  var arraybuffer
   var oReq = new XMLHttpRequest();
   oReq.onload = function(e){
     var arraybuffer = oReq.response;
   }
-  oReq.open("GET", "http://rssahsi.github.io/FHIRScribe/PDF/RSSform1");
+  oReq.open("GET", "http://rssahsi.github.io/FHIRScribe/PDF/RSSform1.pdf");
   oReq.responseType = "arraybuffer";
   oReq.send;
 
