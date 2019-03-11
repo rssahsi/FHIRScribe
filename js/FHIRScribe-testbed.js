@@ -7,7 +7,7 @@ var dataMap = {
     firstname: '',
     fullgivenname: '',
     lastname: ''}
-  }
+  };
 
 (function(window){
   window.extractData = function() {
