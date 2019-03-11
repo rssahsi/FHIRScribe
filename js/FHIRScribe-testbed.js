@@ -4,6 +4,8 @@
 
 var dataMap = {
   patient: {
+    birthdate: '',
+    gender: '',
     name: {
       first: '',
       fullgiven: '',
@@ -17,6 +19,12 @@ var dataMap = {
       postalCode: '',
       complete: ''
     },
+    telecom: {
+      home: '';
+      work: '';
+      mobile: '',
+      email: ''
+    }
   }
 };
 
@@ -112,6 +120,7 @@ var dataMap = {
             dataMap.patient.name.first = patient.name[0].given[0];
             dataMap.patient.name.fullgiven = patient.name[0].given.join(' ');
             dataMap.patient.name.last = patient.name[0].family.join(' ');
+            dataMap.patient.name.complete = dataMap.patient.name.fullgiven + " " + dataMap.patient.name.last
           }
 
           /* Presume the first address object is the only one that matters
@@ -190,9 +199,8 @@ var dataMap = {
     var fields = {
       'aaa' : [dataMap.patient.name.fullgiven + " " + dataMap.patient.name.last.toUpperCase()],
       'bbb' : [dataMap.patient.address.complete, 'betatwo'],
-      'jjj' : 'two',
       'xxx' : 'this field does not exist',
-      'ggg' : [true] 
+      'ggg' : [true] // checkbox gonna checkbox
     };
   
     var out_buf = pdfform().transform(arrayBuffer, fields);
@@ -201,9 +209,6 @@ var dataMap = {
       }
   oReq.send(null);
 
-
-
-  
 
 
   
