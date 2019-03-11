@@ -184,7 +184,7 @@ var dataMap = {
           // has this patient designated an emergency contact?
 
                     /* wait! just how much shit is in that patient object we fetched? */
-                    $.each(patient.contact, function (key, value) {
+                    $.each(patient, function (key, value) {
                       console.log ("Patient Contact :" + key + ": " + JSON.stringify(value));
                     });
                     /* this is just debugging code */
