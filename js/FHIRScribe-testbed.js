@@ -29,6 +29,12 @@ var dataMap = {
       mobile: '',
       email: ''
     }
+  contact: {
+    name: {
+      last: '',
+      first: '',  
+    }
+    telecom: ''
   },
   user: {
     id: '',
@@ -41,7 +47,8 @@ var dataMap = {
       complete: ''
     },
     pracRole: '',
-
+  }
+  allergies: '',
   }
 };
 
