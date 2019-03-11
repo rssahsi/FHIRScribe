@@ -86,7 +86,7 @@ var dataMap = {
                   /* this is just debugging code */
 
                   console.log ("");
-                  console.log ("Hi my name is" + userResult.data.name.given);
+                  console.log ("Hi my name is " + userResult.data.name.given);
 
             var user = {name: ""};
               if (userResult.data.resourceType === "Patient") {
