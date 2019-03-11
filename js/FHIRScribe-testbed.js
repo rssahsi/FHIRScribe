@@ -168,7 +168,7 @@
   //
 
   var oReq = new XMLHttpRequest();
-  oReq.open("GET", "https://rssahsi.github.io/FHIRScribe/PDF/RSSform1.pdf, true");
+  oReq.open("GET", "https://rssahsi.github.io/FHIRScribe/PDF/RSSform1.pdf", true);
   oReq.responseType = "arraybuffer";
 
   oReq.onload = function (oEvent) {
