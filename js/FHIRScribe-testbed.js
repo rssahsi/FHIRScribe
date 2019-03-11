@@ -10,9 +10,6 @@ var dataMap = {
       last = '',
       complete = ''
     },
-    firstname: '',
-    fullgivenname: '',
-    lastname: '',
     address: {
       line: '',
       city: '',
