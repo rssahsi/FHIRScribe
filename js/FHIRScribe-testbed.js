@@ -201,7 +201,7 @@ var dataMap = {
     var fields = {
       'aaa' : [dataMap.patient.name.fullgiven + " " + dataMap.patient.name.last.toUpperCase()],
       'bbb' : [dataMap.patient.address.complete, 'betatwo'],
-      'ccc' : [dataMap.patient.telecom.primary]
+      'ccc' : [dataMap.patient.telecom.primary],
       'ggg' : [true] // checkbox gonna checkbox
     };
   
