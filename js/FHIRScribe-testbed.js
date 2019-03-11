@@ -180,6 +180,16 @@ var dataMap = {
           if (dataMap.patient.telecom.home !== '') {
             dataMap.patient.telecom.primary = dataMap.patient.telecom.home;
           }
+          console.log("");
+          // has this patient designated an emergency contact?
+
+                    /* wait! just how much shit is in that patient object we fetched? */
+                    $.each(patient.contact, function (key, value) {
+                      console.log ("Patient Contact :" + key + ": " + JSON.stringify(value));
+                    });
+                    /* this is just debugging code */
+          console.log("");
+          console.log(patient.contact[0].name[0].family);
 
           // this is where the observation data gets mapped to dataMap (to do)
           var height = byCodes('8302-2');
