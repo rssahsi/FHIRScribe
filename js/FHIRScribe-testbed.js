@@ -6,7 +6,15 @@ var dataMap = {
   patient: {
     firstname: '',
     fullgivenname: '',
-    lastname: ''}
+    lastname: ''
+    },
+  address: {
+    line: '',
+    city: '',
+    state: '',
+    postalCode: '',
+    complete: ''
+    },
   };
 
 (function(window){
