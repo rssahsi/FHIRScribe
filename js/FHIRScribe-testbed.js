@@ -108,7 +108,10 @@ var dataMap = {
 
           //read the AllergyIntolerances Data
           //
-          $.when (smart.patient.api.read({ type: 'AllergyIntolerance' }))
+          $.when (smart.patient.api.search({ 
+              type: 'AllergyIntolerance',
+              query : { category: 'medication' }  
+           }))
             .done(function(allergyResult) {
               console.log("");
               console.log("Allergy Data Grab: " + JSON.stringify(allergyResult.data));
