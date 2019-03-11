@@ -66,38 +66,39 @@ var dataMap = {
         // read the data in the 'patient' context
         var patient = smart.patient;
         var pt = patient.read();
-
-        // read the data for the currently logged in user
-        // this information is grabbed from the user/*.* context, that Cerner hates
+        // identify the current user
         dataMap.user.id = smart.userId; 
         console.log ("Smart User Identification:" + dataMap.user.id);
         var userId = dataMap.user.id;
         var userIdSections = dataMap.user.id.split("/");
 
+        // read the data in the 'user' context
+        // note this information is grabbed from the user/*.* scope, that Cerner hates
         $.when (smart.api.read({ type: userIdSections[userIdSections.length-2], id: userIdSections[userIdSections.length-1]}))
           .done(function(userResult) {
             console.log("User Data Grab: " + JSON.stringify(userResult.data));
             console.log("");
             
                   /* wait! just how much shit is in that userResult.data object we fetched? */
-                  $.each( userResult.data, function (key, value) {
-                    console.log ("User Data Parse: " + key + " : " + JSON.stringify(value));
-                  });
+                  //$.each( userResult.data, function (key, value) {
+                  //  console.log ("User Data Parse: " + key + " : " + JSON.stringify(value));
+                  //});
                   /* this is just debugging code */
 
+            //assign user data to dataMap object
             dataMap.user.name.given = userResult.data.name.given;
             dataMap.user.name.last = userResult.data.name.family;
             dataMap.user.name.suffix = userResult.data.name.suffix;
             dataMap.user.name.complete = dataMap.user.name.given + " " + dataMap.user.name.last;
             
+            //what if the logged in user is a patient, not practitioner?
             var user = {name: ""};
-              if (userResult.data.resourceType === "Patient") {
-                var patientName = userResult.data && userResult.data.name && userResult.data.name[0];
-                user.name = patientName.given.join(" ") + " " + patientName.family.join(" ").trim();
+            if (userResult.data.resourceType === "Patient") {
+              var patientName = userResult.data && userResult.data.name && userResult.data.name[0];
+              user.name = patientName.given.join(" ") + " " + patientName.family.join(" ").trim();
                 }
-              user.id = userResult.data.id;
-              console.log ("Captured User Data:" + JSON.stringify(user) + "::" + userId);
-              });
+            user.id = userResult.data.id;
+          });
           
  
         /* fetch the relevant data from the 'Observation' resource */
@@ -129,10 +130,7 @@ var dataMap = {
                     //});
                     /* this is just debugging code */
 
-                    console.log("User Identification:" + userId);
-
-          /* compute patient name variables */
-
+          // parse patient name data and assign to dataMap
           if (typeof patient.name[0] !== 'undefined') {   
             dataMap.patient.name.first = patient.name[0].given[0];
             dataMap.patient.name.fullgiven = patient.name[0].given.join(' ');
@@ -140,21 +138,18 @@ var dataMap = {
             dataMap.patient.name.complete = dataMap.patient.name.fullgiven + " " + dataMap.patient.name.last
           }
 
-          /* Presume the first address object is the only one that matters
-             read the components and rearrange them into a single string. */
-          /* in future: we may need to iterate through multiple addresses to find 'home' */
-
+          // parse patient address data and assign to dataMap
+          // this current presumes that the first address object is "home"
+          // in future: we may need to iterate through multiple addresses to find 'home'
           if (typeof patient.address[0].city !== 'undefined') dataMap.patient.address.city = patient.address[0].city;
           if (typeof patient.address[0].line !== 'undefined') dataMap.patient.address.line = patient.address[0].line.join(', ');
           if (typeof patient.address[0].state !== 'undefined') dataMap.patient.address.state = patient.address[0].state;
           if (typeof patient.address[0].postalCode !== 'undefined') dataMap.patient.address.postalCode = patient.address[0].postalCode;         
           dataMap.patient.address.complete = dataMap.patient.address.line + ", " + dataMap.patient.address.city + ", " + dataMap.patient.address.state + " " + dataMap.patient.address.postalCode;
 
-          /* Now we cobble together a sensible telephone number or two.
-             We have to iterate through multiple telecom objects to find which are 
-             "system: phone", and which is highest priority for a primary contact number.
-             home >> mobile >> work  */
-
+          // parse patient telecom data for telephone numbers
+          // we need to iterate through multiple telecom objects and identify which are
+          // 'system: phone' ... and assign them to dataMap by type
           $.each( patient.telecom, function (key, value) {
             if (typeof patient.telecom[key] !== 'undefined') {
               if (patient.telecom[key].system == "phone") {
@@ -167,19 +162,20 @@ var dataMap = {
                 }
               }
             } 
-            });
+          });
 
-            if (dataMap.patient.telecom.work !== '') {
-              dataMap.patient.telecom.primary = dataMap.patient.telecom.work;
-            }
+          // set primary telephone number assuming home >> mobile >> work
+          if (dataMap.patient.telecom.work !== '') {
+            dataMap.patient.telecom.primary = dataMap.patient.telecom.work;
+          }
+          if (dataMap.patient.telecom.mobile !== '') {
+            dataMap.patient.telecom.primary = dataMap.patient.telecom.mobile;
+          }
+          if (dataMap.patient.telecom.home !== '') {
+            dataMap.patient.telecom.primary = dataMap.patient.telecom.home;
+          }
 
-            if (dataMap.patient.telecom.mobile !== '') {
-              dataMap.patient.telecom.primary = dataMap.patient.telecom.mobile;
-            }
-            if (dataMap.patient.telecom.home !== '') {
-              dataMap.patient.telecom.primary = dataMap.patient.telecom.home;
-            }
-
+          // this is where the observation data gets mapped to dataMap (to do)
           var height = byCodes('8302-2');
           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
@@ -209,7 +205,7 @@ var dataMap = {
 
 
   //
-  // PDF Code Fuckery FTW
+  // NOW ENTER SOME SERIOUS PDF FORM FUCKERY FTW!
   //
 
   var oReq = new XMLHttpRequest();
@@ -251,12 +247,15 @@ var dataMap = {
 
     }
 
+    // master connection subroutine for FHIR
     FHIR.oauth2.ready(onReady, onError);
     return ret.promise();
 
     
 
   };
+
+  // floating functions beyond this point
 
   function defaultPatient(){
     return {
