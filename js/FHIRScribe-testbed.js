@@ -33,7 +33,7 @@ var dataMap = {
     name: {
       last: '',
       first: '',  
-    }
+    },
     telecom: ''
   },
   user: {
