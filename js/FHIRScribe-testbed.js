@@ -2,7 +2,12 @@
 // will subsequently be mapped to the fields of the resulting PDF
 // based on the structure in the master.json
 
-var dataMap = '';
+var dataMap = {
+  patient: {
+    firstname: '',
+    fullgivenname: '',
+    lastname: ''}
+  }
 
 (function(window){
   window.extractData = function() {
@@ -87,9 +92,9 @@ var dataMap = '';
 
           /* compute patient name variables */
 
-          dataMap.patient.firstname = '';
-          dataMap.patient.fullgivenname = '';
-          dataMap.patient.lastname = '';
+          //dataMap.patient.firstname = '';
+          //dataMap.patient.fullgivenname = '';
+          //dataMap.patient.lastname = '';
           //var pt_firstname = ''; var pt_fullgivenname = ''; var pt_lastname = '';
 
           if (typeof patient.name[0] !== 'undefined') {   
