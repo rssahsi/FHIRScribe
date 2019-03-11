@@ -105,9 +105,18 @@ var dataMap = {
                 }
             user.id = userResult.data.id;
           });
+
+          //read the AllergyIntolerances Data
+          //
+          $.when (smart.api.read({ type: 'AllergyIntolerance '}))
+            .done(function(allergyResult) {
+              console.log("");
+              console.log("Allergy Data Grab: " + JSON.stringify(allergyResult.data));
+
+            };
           
  
-        /* fetch the relevant data from the 'Observation' resource */
+        // fetch the relevant data from the 'Observation' resource 
                   var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
                     query: {
@@ -118,6 +127,8 @@ var dataMap = {
                       }
                     }
                   });
+
+        // should we fetch some allergy data?
 
                   /* wait! just how much shit is in that "smart" object we fetched? */
                   //$.each( smart, function (key, value) {
