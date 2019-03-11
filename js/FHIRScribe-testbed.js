@@ -113,7 +113,7 @@ var dataMap = {
               console.log("");
               console.log("Allergy Data Grab: " + JSON.stringify(allergyResult.data));
 
-            };
+            });
           
  
         // fetch the relevant data from the 'Observation' resource 
