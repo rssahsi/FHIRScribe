@@ -190,6 +190,8 @@ var dataMap = {
     var fields = {
       'aaa' : [dataMap.patient.name.fullgiven + " " + dataMap.patient.name.last.toUpperCase()],
       'bbb' : [dataMap.patient.address.complete, 'betatwo'],
+      'jjj' : 'two',
+      'xxx' : 'this field does not exist',
       'ggg' : [true] 
     };
   
