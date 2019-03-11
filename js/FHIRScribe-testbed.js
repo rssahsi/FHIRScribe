@@ -2,7 +2,7 @@
 // will subsequently be mapped to the fields of the resulting PDF
 // based on the structure in the master.json
 
-var dataMap = {""};
+var dataMap = '';
 
 (function(window){
   window.extractData = function() {
