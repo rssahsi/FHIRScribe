@@ -1,7 +1,7 @@
-var FHIRfile = ('%FDF-1.2\n\%xxxx\n1 0 obj\n\<\<\n\/FDF \<\<\/Fields \[');
-var FHIRfooter = ('\]\n\n\>\>\n\>\>\n\nendobj\ntrailer\n\<\<\/Root 1 0 R\>\>\n\%\%EOF');
+//var FHIRfile = ('%FDF-1.2\n\%xxxx\n1 0 obj\n\<\<\/FDF \<\<\/Fields \[');
+//var FHIRfooter = ('\]\n\n\>\>\n\>\>\n\nendobj\ntrailer\n\<\<\/Root 1 0 R\>\>\n\%\%EOF');
 
-var FHIRfields = "";
+//var FHIRfields = "";
 
 (function(window){
   window.extractData = function() {
@@ -159,9 +159,9 @@ var FHIRfields = "";
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
 
-          FHIRfile = FHIRfile + "\n" + "\<\<\/T\(Patient Name\)\/V("+ p.givenname + " " + p.lastname +"\)\>\>";
-          FHIRfile = FHIRfile + "\n" + FHIRfooter;
-          console.log(FHIRfile);
+  //        FHIRfile = FHIRfile + "\n" + "\<\<\/T\(Patient Name\)\/V("+ p.givenname + " " + p.lastname +"\)\>\>";
+  //        FHIRfile = FHIRfile + "\n" + FHIRfooter;
+  //        console.log(FHIRfile);
 
           ret.resolve(p);
         });
