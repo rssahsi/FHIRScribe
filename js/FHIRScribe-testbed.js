@@ -28,7 +28,7 @@ var dataMap = {
       work: '',
       mobile: '',
       email: ''
-    }
+    },
   contact: {
     name: {
       last: '',
