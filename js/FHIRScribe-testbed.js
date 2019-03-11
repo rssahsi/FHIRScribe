@@ -175,7 +175,7 @@
     var arrayBuffer = oReq.response;
     console.log(pdfform().list_fields(arrayBuffer));
     var fields = {
-      'aaa' : ['alpha'],
+      'aaa' : [pt_fullgivenname + toUpperCase(pt_lastname)],
       'bbb' : ['beta', 'betatwo'],
       'ggg' : [true] 
     };
