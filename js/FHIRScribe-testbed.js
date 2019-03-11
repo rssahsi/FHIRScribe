@@ -174,18 +174,19 @@
   oReq.onload = function (oEvent) {
     var arrayBuffer = oReq.response;
     console.log(pdfform().list_fields(arrayBuffer));
+    var fields = {
+      'aaa' : ['alpha'],
+      'bbb' : ['beta', 'betatwo'],
+      'ggg' : [true] 
+    };
+  
+    var out_buf = pdfform().transform(arrayBuffer, fields);
+    var blob = new Blob([out_buf], {type: 'application/pdf'});
+    saveAs(blob, 'generated.pdf');
       }
   oReq.send(null);
 
-  var fields = {
-    'aaa' : ['alpha'],
-    'bbb' : ['beta', 'betatwo'],
-    'ggg' : [true] 
-  };
 
-  var out_buf = pdfform().transform(arrayBuffer, fields);
-	var blob = new Blob([out_buf], {type: 'application/pdf'});
-	saveAs(blob, 'generated.pdf');
 
   
 
