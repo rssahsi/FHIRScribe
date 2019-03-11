@@ -20,8 +20,8 @@ var dataMap = {
       complete: ''
     },
     telecom: {
-      home: '';
-      work: '';
+      home: '',
+      work: '',
       mobile: '',
       email: ''
     }
