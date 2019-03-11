@@ -20,6 +20,7 @@ var dataMap = {
       complete: ''
     },
     telecom: {
+      primary: '',
       home: '',
       work: '',
       mobile: '',
@@ -111,11 +112,6 @@ var dataMap = {
 
           /* compute patient name variables */
 
-          //dataMap.patient.firstname = '';
-          //dataMap.patient.fullgivenname = '';
-          //dataMap.patient.lastname = '';
-          //var pt_firstname = ''; var pt_fullgivenname = ''; var pt_lastname = '';
-
           if (typeof patient.name[0] !== 'undefined') {   
             dataMap.patient.name.first = patient.name[0].given[0];
             dataMap.patient.name.fullgiven = patient.name[0].given.join(' ');
@@ -127,7 +123,6 @@ var dataMap = {
              read the components and rearrange them into a single string. */
           /* in future: we may need to iterate through multiple addresses to find 'home' */
 
-          //var line = ''; var city = ''; var state = ''; var postalCode = '';
           if (typeof patient.address[0].city !== 'undefined') dataMap.patient.address.city = patient.address[0].city;
           if (typeof patient.address[0].line !== 'undefined') dataMap.patient.address.line = patient.address[0].line.join(', ');
           if (typeof patient.address[0].state !== 'undefined') dataMap.patient.address.state = patient.address[0].state;
@@ -138,9 +133,6 @@ var dataMap = {
              We have to iterate through multiple telecom objects to find which are 
              "system: phone", and which is highest priority for a contact number.
              home >> mobile >> work >> other */
-
-          var homenumber = '';
-          var mobilenumber = '';
 
           $.each( patient.telecom, function (key, value) {
             if (typeof patient.telecom[key] !== 'undefined') {
