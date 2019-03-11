@@ -163,6 +163,23 @@
   //        FHIRfile = FHIRfile + "\n" + FHIRfooter;
   //        console.log(FHIRfile);
 
+  //
+  // PDF Code Fuckery FTW
+  //
+
+  var oReq = new XMLHttpRequest();
+  oReq.onload = function(e){
+    var arraybuffer = oReq.response;
+  }
+  oReq.open("GET", "http://rssahsi.github.io/FHIRScribe/PDF/RSSform1");
+  oReq.responseType = "arraybuffer";
+  oReq.send;
+
+
+  console.log(pdfform().list_fields(arraybuffer));
+
+
+
           ret.resolve(p);
         });
       } else {
