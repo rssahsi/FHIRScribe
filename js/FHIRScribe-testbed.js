@@ -71,6 +71,7 @@ var dataMap = {
         // this information is grabbed from the user/*.* context, that Cerner hates
         dataMap.user.id = smart.userId; 
         console.log ("Smart User Identification:" + dataMap.user.id);
+        var userId = dataMap.user.id;
         var userIdSections = dataMap.user.id.split("/");
 
         $.when (smart.api.read({ type: userIdSections[userIdSections.length-2], id: userIdSections[userIdSections.length-1]}))
@@ -83,7 +84,7 @@ var dataMap = {
                     console.log ("User Data Parse: " + key + " : " + JSON.stringify(value));
                   });
                   /* this is just debugging code */
-                  
+
                   console.log ("");
                   console.log ("Hi my name is" + userResult.data.name.given);
 
