@@ -94,7 +94,6 @@ var dataMap = {
             var user = {name: ""};
               if (userResult.data.resourceType === "Patient") {
                 var patientName = userResult.data && userResult.data.name && userResult.data.name[0];
-                dataMap.user.name.first = 
                 user.name = patientName.given.join(" ") + " " + patientName.family.join(" ").trim();
                 }
               user.id = userResult.data.id;
