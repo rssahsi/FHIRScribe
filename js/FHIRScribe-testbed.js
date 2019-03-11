@@ -188,7 +188,7 @@ var dataMap = {
     var arrayBuffer = oReq.response;
     console.log(pdfform().list_fields(arrayBuffer));
     var fields = {
-      'aaa' : [dataMap.patient.fullgivenname + " " + dataMap.patient.lastname.toUpperCase()],
+      'aaa' : [dataMap.patient.name.full+ " " + dataMap.patient.name.last.toUpperCase()],
       'bbb' : [dataMap.patient.address.complete, 'betatwo'],
       'ggg' : [true] 
     };
