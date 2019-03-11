@@ -1,7 +1,8 @@
-//var FHIRfile = ('%FDF-1.2\n\%xxxx\n1 0 obj\n\<\<\/FDF \<\<\/Fields \[');
-//var FHIRfooter = ('\]\n\n\>\>\n\>\>\n\nendobj\ntrailer\n\<\<\/Root 1 0 R\>\>\n\%\%EOF');
+// DataMap object that contains the structure of the internal variables
+// will subsequently be mapped to the fields of the resulting PDF
+// based on the structure in the master.json
 
-//var FHIRfields = "";
+var dataMap = {""};
 
 (function(window){
   window.extractData = function() {
@@ -65,10 +66,6 @@
                     }
                   });
 
-        // what are the properties of "smart" anyway?
-        //var testkeys = Object.keys(smart);
-        //console.log("Smart Test Keys: " + testkeys);
-
                   /* wait! just how much shit is in that "smart" object we fetched? */
                   //$.each( smart, function (key, value) {
                   //  console.log ("Smart :" + key + ": " + JSON.stringify(value));
@@ -90,12 +87,15 @@
 
           /* compute patient name variables */
 
-          var pt_firstname = ''; var pt_fullgivenname = ''; var pt_lastname = '';
+          dataMap.patient.firstname = '';
+          dataMap.patient.fullgivenname = '';
+          dataMap.patient.lastname = '';
+          //var pt_firstname = ''; var pt_fullgivenname = ''; var pt_lastname = '';
 
           if (typeof patient.name[0] !== 'undefined') {   
-            pt_firstname = patient.name[0].given[0];
-            pt_fullgivenname = patient.name[0].given.join(' ');
-            pt_lastname = patient.name[0].family.join(' ');
+            dataMap.patient.firstname = patient.name[0].given[0];
+            dataMap.patient.fullgivenname = patient.name[0].given.join(' ');
+            dataMap.patient.lastname = patient.name[0].family.join(' ');
           }
 
           /* Presume the first address object is the only one that matters
@@ -141,9 +141,9 @@
           var p = defaultPatient();
           p.birthdate = patient.birthDate;
           p.gender = patient.gender;
-          p.firstname = pt_firstname;
-          p.givenname = pt_fullgivenname;
-          p.lastname = pt_lastname;
+          p.firstname = dataMap.patient.firstname;
+          p.givenname = dataMap.patient.fullgivenname;
+          p.lastname = dataMap.patient.lastname;
           p.telecom = telecom; // I added this
           p.address = address; // I added this
 //          p.height = getQuantityValueAndUnit(height[0]);
@@ -159,9 +159,6 @@
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
 
-  //        FHIRfile = FHIRfile + "\n" + "\<\<\/T\(Patient Name\)\/V("+ p.givenname + " " + p.lastname +"\)\>\>";
-  //        FHIRfile = FHIRfile + "\n" + FHIRfooter;
-  //        console.log(FHIRfile);
 
   //
   // PDF Code Fuckery FTW
@@ -232,22 +229,6 @@
     };
   }
 
-  function defaultUser(){
-    return {
-      firstname: {value: ''},
-      givenname: {value: ''},
-      lastname: {value: ''},
-      gender: {value: ''},
-      birthdate: {value: ''},
-      telecom: {value: ''},
-      address: {value: ''},
-      height: {value: ''},
-      systolicbp: {value: ''},
-      diastolicbp: {value: ''}, 
-      ldl: {value: ''},
-      hdl: {value: ''},
-    };
-  }
 
   function getBloodPressureValue(BPObservations, typeOfPressure) {
     var formattedBPObservations = [];
