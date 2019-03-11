@@ -176,7 +176,7 @@
     console.log(pdfform().list_fields(arrayBuffer));
     var fields = {
       'aaa' : [pt_fullgivenname + " " + pt_lastname.toUpperCase()],
-      'bbb' : ['beta', 'betatwo'],
+      'bbb' : [address, 'betatwo'],
       'ggg' : [true] 
     };
   
