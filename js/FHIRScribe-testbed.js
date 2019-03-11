@@ -49,8 +49,7 @@ var dataMap = {
     },
     pracRole: '',
   },
-  allergies: '',
-  }
+  allergies: ''
 };
 
 (function(window){
