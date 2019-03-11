@@ -28,7 +28,8 @@ var dataMap = {
       work: '',
       mobile: '',
       email: ''
-    },
+    }
+  },
   contact: {
     name: {
       last: '',
@@ -68,14 +69,13 @@ var dataMap = {
 
     function onReady(smart)  {
 
-
       if (smart.hasOwnProperty('patient')) {
         // read the data in the 'patient' context
         var patient = smart.patient;
         var pt = patient.read();
         // identify the current user
         dataMap.user.id = smart.userId; 
-        console.log ("Smart User Identification:" + dataMap.user.id);
+        console.log ("Smart User Identification: " + dataMap.user.id);
         var userId = dataMap.user.id;
         var userIdSections = dataMap.user.id.split("/");
 
