@@ -189,7 +189,8 @@ var dataMap = {
                     });
                     /* this is just debugging code */
           console.log("");
-          console.log(patient.contact[0].name[0].family);
+
+
 
           // this is where the observation data gets mapped to dataMap (to do)
           var height = byCodes('8302-2');
