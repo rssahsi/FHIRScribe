@@ -5,10 +5,10 @@
 var dataMap = {
   patient: {
     name: {
-      first: = '',
-      fullgiven: = '',
-      last: = '',
-      complete: = ''
+      first: '',
+      fullgiven: '',
+      last: '',
+      complete: ''
     },
     address: {
       line: '',
