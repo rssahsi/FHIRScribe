@@ -88,9 +88,8 @@ var dataMap = {
             dataMap.user.name.given = userResult.data.name.given;
             dataMap.user.name.last = userResult.data.name.family;
             dataMap.user.name.suffix = userResult.data.name.suffix;
-            console.log("");
-            console.log("Hi, I'm " + dataMap.user.name.given + " " + dataMap.user.name.last + " " + dataMap.user.name.suffix);
-
+            dataMap.user.name.complete = dataMap.user.name.given + " " + dataMap.user.name.last;
+            
             var user = {name: ""};
               if (userResult.data.resourceType === "Patient") {
                 var patientName = userResult.data && userResult.data.name && userResult.data.name[0];
