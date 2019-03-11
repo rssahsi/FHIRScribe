@@ -115,12 +115,12 @@ var dataMap = {
              read the components and rearrange them into a single string. */
           /* in future: we may need to iterate through multiple addresses to find 'home' */
 
-          var line = ''; var city = ''; var state = ''; var postalCode = '';
-          if (typeof patient.address[0].city !== 'undefined') city = patient.address[0].city;
-          if (typeof patient.address[0].line !== 'undefined') line = patient.address[0].line.join(', ');
-          if (typeof patient.address[0].state !== 'undefined') state = patient.address[0].state;
-          if (typeof patient.address[0].postalCode !== 'undefined') postalCode = patient.address[0].postalCode;         
-          var address = line + ", " + city + ", " + state + " " + postalCode;
+          //var line = ''; var city = ''; var state = ''; var postalCode = '';
+          if (typeof patient.address[0].city !== 'undefined') dataMap.patient.address.city = patient.address[0].city;
+          if (typeof patient.address[0].line !== 'undefined') dataMap.patient.address.line = patient.address[0].line.join(', ');
+          if (typeof patient.address[0].state !== 'undefined') dataMap.patient.address.state = patient.address[0].state;
+          if (typeof patient.address[0].postalCode !== 'undefined') dataMap.patient.address.postalCode = patient.address[0].postalCode;         
+          dataMap.patient.address.complete = dataMap.patient.address.line + ", " + dataMap.patient.address.city + ", " + dataMap.patient.address.state + " " + dataMap.patient.address.postalCode;
 
           /* Now we cobble together a sensible telephone number or two.
              We have to iterate through multiple telecom objects to find which are 
@@ -158,7 +158,7 @@ var dataMap = {
           p.givenname = dataMap.patient.fullgivenname;
           p.lastname = dataMap.patient.lastname;
           p.telecom = telecom; // I added this
-          p.address = address; // I added this
+          p.address = dataMap.patient.addess.complete; // I added this
 //          p.height = getQuantityValueAndUnit(height[0]);
          
           if (typeof systolicbp != 'undefined')  {
@@ -186,7 +186,7 @@ var dataMap = {
     console.log(pdfform().list_fields(arrayBuffer));
     var fields = {
       'aaa' : [dataMap.patient.fullgivenname + " " + dataMap.patient.lastname.toUpperCase()],
-      'bbb' : [dataMap.patient.address, 'betatwo'],
+      'bbb' : [dataMap.patient.address.complete, 'betatwo'],
       'ggg' : [true] 
     };
   
