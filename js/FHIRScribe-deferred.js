@@ -357,5 +357,5 @@ var renderPDF = function(window){
 
 };
 
-renderPDF(window);
-
+//renderPDF(window);
+console.log("Fuck you.")
