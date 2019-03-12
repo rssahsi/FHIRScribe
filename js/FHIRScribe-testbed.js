@@ -110,7 +110,7 @@ var dataMap = {
           //
           $.when (smart.patient.api.search({ 
               type: 'AllergyIntolerance',
-              query : { category: 'medication' }  
+              query : { code: 'active' }  
            }))
             .done(function(allergyResult) {
               console.log("");
