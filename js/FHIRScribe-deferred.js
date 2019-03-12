@@ -52,7 +52,7 @@ var dataMap = {
   allergies: ''
 };
 
-var renderPDF = function(window){
+var renderPDF = function(window, templateURL){
   window.extractData = function() {
     var ret = $.Deferred();
 
@@ -244,7 +244,8 @@ var renderPDF = function(window){
   //
 
   var oReq = new XMLHttpRequest();
-  oReq.open("GET", "https://rssahsi.github.io/FHIRScribe/PDF/test.pdf", true);
+  //oReq.open("GET", "https://rssahsi.github.io/FHIRScribe/PDF/test.pdf", true);
+oReq.open("GET", templateURL, true); 
   oReq.responseType = "arraybuffer";
 
   oReq.onload = function (oEvent) {
@@ -357,5 +358,5 @@ var renderPDF = function(window){
 
 };
 
-renderPDF(window);
+renderPDF(window, "https://rssahsi.github.io/FHIRScribe/PDF/test.pdf");
 
