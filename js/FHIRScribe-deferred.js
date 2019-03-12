@@ -52,6 +52,7 @@ var dataMap = {
   allergies: ''
 };
 
+//testing
 var masterMap;
 function loadMasterJSON(callback) {
 var master_grab = new XMLHttpRequest();
@@ -65,7 +66,7 @@ master_grab.onreadystatechange = function () {
       };
       master_grab.send(null);
 }
-
+// testing
 masterMap = loadMasterJSON();
 console.log(masterMap);
 
