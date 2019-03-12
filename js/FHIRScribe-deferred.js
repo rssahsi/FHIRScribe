@@ -52,7 +52,6 @@ var dataMap = {
   allergies: ''
 };
 
-//testing
 var masterMap;
 function loadMasterJSON(callback) {
 var master_grab = new XMLHttpRequest();
