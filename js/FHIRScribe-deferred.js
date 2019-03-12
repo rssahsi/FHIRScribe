@@ -3,7 +3,7 @@
 
 // The 'dataMap; object keeps the data grabbed from the FHIR server organized.
 // These values are made available to the resulting PDF
-// based on the assignment structure in the master.json
+// based on the assignment structure in the m aster.json
 
 var dataMap = {
   patient: {
