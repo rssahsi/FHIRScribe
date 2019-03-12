@@ -1,48 +1,51 @@
-type: 'category'
-text: 'Provincial MOH\/MOT/\WSIB Forms'
-elements: {
-	type: 'doc',
-	code: 'form1',
-	text: 'Form 1 and Form 42 Ministry of Health',
-	url: 'http://rssahsi.github.io/FHIRScribe/PDF/RSSform1.pdf',
-	method: simple,
-	map {
-		MDName: user_name,
-		PTName: pt_fullname,
-		PTAddy: pt_address,
-		Today: nowDate,
-		nowTime: nowTime,
+{
+'type': 'category'
+'text': 'Provincial MOH\/MOT/\WSIB Forms'
+'element': {
+	'type': 'doc',
+	'code': 'form1',
+	'text': 'Form 1 and Form 42 Ministry of Health',
+	'url': 'http://rssahsi.github.io/FHIRScribe/PDF/RSSform1.pdf',
+	'method': 'simple',
+	'map' {
+		'MDName': 'user_name',
+		'PTName': 'pt_fullname',
+		'PTAddy': 'pt_address',
+		'Today': 'nowDate',
+		'nowTime': 'nowTime',
 		},
 	{
-	type: 'doc',
-	code: 'test',
-	text: 'Test Document',
-	url: 'http://rssahsi.github.io/FHIRScribe/PDF/test.pdf',
-	method: simple,
-	map {
-		aaa: user_name,
-		bbb: pt_fullname,
-		ccc: pt_address,
-		ddd: nowDate,
-		eee: nowTime,
+	'type': 'doc',
+	'code': 'test',
+	'text': 'Test Document',
+	'url': 'http://rssahsi.github.io/FHIRScribe/PDF/test.pdf',
+	'method': 'simple',
+	'map' {
+		'aaa': 'user_name',
+		'bbb': 'pt_fullname',
+		'ccc': 'pt_address',
+		'ddd': 'nowDate',
+		'eee': 'nowTime',
 		},
 	}
+},
 
-type: 'category',
-text: 'Hospital based nonsense',
-elements: {
-	type: 'doc',
-	code: 'test2',
-	text 'Another Test Document',
-	url: 'http://rssahsi.github.io/FHIRScribe/PDF/test.pdf',
-	method: simple,
-	map {
-		aaa: user_name,
-		bbb: pt_fullname,
-		ccc: pt_address,
-		ddd: nowDate,
-		eee: nowTime,
+{
+'type': 'category',
+'text': 'Hospital based nonsense',
+'elements': {
+	'type': 'doc',
+	'code': 'test2',
+	'text': 'Another Test Document',
+	'url': 'http://rssahsi.github.io/FHIRScribe/PDF/test.pdf',
+	'method': 'simple',
+	'map' {
+		'aaa': 'user_name',
+		'bbb': 'pt_fullname',
+		'ccc': 'pt_address',
+		'ddd': 'nowDate',
+		'eee': 'nowTime',
 		},
 	}
-
+}
 

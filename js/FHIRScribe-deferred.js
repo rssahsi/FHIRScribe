@@ -52,6 +52,24 @@ var dataMap = {
   allergies: ''
 };
 
+var masterMap;
+function loadMasterJSON(callback) {
+var master_grab = new XMLHttpRequest();
+master_grab.overrideMimeType("application/json");
+master_grab.open("GET", "http://rssahsi.github.io/FHIRScribe/PDF/master.json", true);
+master_grab.open()
+master_grab.onreadystatechange = function () {
+    if (master_grab.readyState == 4 && master_grab.status == "200") {
+        // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+        callback(master_grab.responseText);
+        }
+      };
+      master_grab.send(null);
+}
+
+masterMap = loadMasterJSON();
+console.log(masterMap);
+
 var renderPDF = function(window, templateURL){
   window.extractData = function() {
     var ret = $.Deferred();
