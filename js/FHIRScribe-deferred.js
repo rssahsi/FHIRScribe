@@ -57,7 +57,6 @@ function loadMasterJSON(callback) {
 var master_grab = new XMLHttpRequest();
 master_grab.overrideMimeType("application/json");
 master_grab.open("GET", "http://rssahsi.github.io/FHIRScribe/PDF/master.json", true);
-master_grab.open()
 master_grab.onreadystatechange = function () {
     if (master_grab.readyState == 4 && master_grab.status == "200") {
         // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
@@ -263,7 +262,7 @@ var renderPDF = function(window, templateURL){
 
   var oReq = new XMLHttpRequest();
   //oReq.open("GET", "https://rssahsi.github.io/FHIRScribe/PDF/test.pdf", true);
-oReq.open("GET", templateURL, true); 
+  oReq.open("GET", templateURL, true); 
   oReq.responseType = "arraybuffer";
 
   oReq.onload = function (oEvent) {
