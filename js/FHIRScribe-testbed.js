@@ -108,8 +108,8 @@ var dataMap = {
 
           //read the AllergyIntolerances Data
           //
-          $.when (smart.patient.api.fetchAll({ 
-              type: 'AllergyIntolerance' }
+          $.when (smart.patient.api.fetchAll ({ 
+              type: 'AllergyIntolerance'  
            }))
             .done(function(allergyResult) {
               console.log("");
