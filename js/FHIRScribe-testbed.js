@@ -115,12 +115,14 @@ var dataMap = {
               console.log("");
               console.log("Allergy Data Grab: " + JSON.stringify(allergyResult));
               console.log("");
-              dataMap.allergies = allergyResult;
                   /* wait! just how much shit is in that 'allergies' object we fetched? */
-                  $.each( dataMap.allergies, function (key, value) {
+                  $.each( allergyResult, function (key, value) {
                     console.log ("Allergies :" + key + ": " + JSON.stringify(value));
                     });
                     /* this is just debugging code */ 
+                    //
+              // ***now you need code to parse and map the allergies to DataMap***
+                    //
             });
 
  
