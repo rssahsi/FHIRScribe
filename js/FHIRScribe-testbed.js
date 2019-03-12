@@ -106,7 +106,7 @@ var dataMap = {
             user.id = userResult.data.id;
           });
 
-          //read the AllergyIntolerances Data
+          //read all available AllergyIntolerances Data
           //
           $.when (smart.patient.api.fetchAll ({ 
               type: 'AllergyIntolerance'  
@@ -114,6 +114,7 @@ var dataMap = {
             .done(function(allergyResult) {
               console.log("");
               console.log("Allergy Data Grab: " + JSON.stringify(allergyResult));
+              dataMap.allergies = allergyResult;
 
             });
           
