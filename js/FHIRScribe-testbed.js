@@ -116,13 +116,13 @@ var dataMap = {
               console.log("Allergy Data Grab: " + JSON.stringify(allergyResult));
               console.log("");
               dataMap.allergies = allergyResult;
-
-            });
                   /* wait! just how much shit is in that 'allergies' object we fetched? */
                   $.each( dataMap.allergies, function (key, value) {
-                  console.log ("Allergies :" + key + ": " + JSON.stringify(value));
-                  });
-                  /* this is just debugging code */ 
+                    console.log ("Allergies :" + key + ": " + JSON.stringify(value));
+                    });
+                    /* this is just debugging code */ 
+            });
+
  
         // fetch the relevant data from the 'Observation' resource 
                   var obv = smart.patient.api.fetchAll({
