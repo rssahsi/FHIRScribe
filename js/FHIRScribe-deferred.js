@@ -52,7 +52,7 @@ var dataMap = {
   allergies: ''
 };
 
-(function(window){
+var renderPDF = function(window){
   window.extractData = function() {
     var ret = $.Deferred();
 
@@ -355,7 +355,7 @@ var dataMap = {
     $('#hdl').html(p.hdl);
   };
 
-})(window);
+};
 
-
+renderPDF();
 
